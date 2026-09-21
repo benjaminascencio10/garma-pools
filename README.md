@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Garma Pools
 
-## Getting Started
+Landing page for Garma Pools — pool construction, maintenance, cleaning, repair,
+and pool care products in the Rio Grande Valley, Texas. Built with Next.js
+(App Router), TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `src/data/` — editable content: `company.ts` (name/phone/region), `services.ts`,
+  `quoteWizard.ts` (the get-a-quote flow), `construction.ts`, `maintenance.ts`,
+  `products.ts`, `serviceAreas.ts`, `quickQuote.ts`, `howItWorks.ts`. Update
+  these files rather than hardcoding copy in components.
+- `src/components/` — one component per landing page section, plus `ui/` for
+  shared primitives (`Container`, `SectionHeading`, `PlaceholderImage`).
+- `src/lib/quote.ts` — where the quote wizard submission is sent. There is no
+  backend yet; this is the single place to wire up email, WhatsApp, a CRM,
+  Google Sheets, or a payment step later.
+- `src/lib/schema.ts` — LocalBusiness/Service JSON-LD for local SEO.
 
-## Learn More
+## What's intentionally a placeholder
 
-To learn more about Next.js, take a look at the following resources:
+No real Garma Pools photography, pricing, product catalog, confirmed service
+cities, or social links exist yet. These are marked clearly in the code and
+UI so they're easy to find and replace:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Photos: every image slot uses `PlaceholderImage` (`src/components/ui/PlaceholderImage.tsx`).
+- Prices: `products.ts` and `quickQuote.ts` use `null` prices, rendered as
+  "Request a custom quote" / "Price not yet available".
+- Service area cities: `serviceAreas.ts` — coverage is shown as unconfirmed
+  until the business confirms it.
+- Construction categories not yet confirmed as real offerings are flagged
+  with `confirmed: false` in `construction.ts`.
+- Social links: `company.ts` — empty until real profile URLs are provided.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deploy
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deploys via Vercel. Set `NEXT_PUBLIC_SITE_URL` to the production URL so
+metadata, sitemap, and JSON-LD use the right domain.
