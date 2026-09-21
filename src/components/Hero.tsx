@@ -1,6 +1,6 @@
+import Image from "next/image";
 import { Phone, MapPin } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { company, companyText } from "@/data/company";
 import { ui } from "@/i18n/ui";
 import type { Locale } from "@/i18n/locale";
@@ -12,11 +12,13 @@ export function Hero({ locale }: { locale: Locale }) {
   return (
     <section id="top" className="relative overflow-hidden bg-navy-950 text-white">
       <div className="absolute inset-0">
-        <PlaceholderImage
-          label={t.hero.photoPlaceholder}
-          caption={t.photoPlaceholderLabel}
-          className="h-full w-full rounded-none border-0"
-          dark
+        <Image
+          src="/images/pool-hero.jpg"
+          alt={t.hero.photoAlt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/80 to-navy-950/40" />
       </div>

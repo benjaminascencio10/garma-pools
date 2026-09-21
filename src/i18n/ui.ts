@@ -1,5 +1,10 @@
 import type { Locale } from "@/i18n/locale";
 
+interface GalleryPhoto {
+  caption: string;
+  alt: string;
+}
+
 export interface UiText {
   nav: {
     links: { label: string; href: string }[];
@@ -13,7 +18,7 @@ export interface UiText {
     description: string;
     ctaPrimary: string;
     ctaSecondary: string;
-    photoPlaceholder: string;
+    photoAlt: string;
   };
   services: {
     eyebrow: string;
@@ -71,7 +76,14 @@ export interface UiText {
     description: string;
     unconfirmedBadge: string;
     ctaLabel: string;
-    photoPlaceholder: string;
+    showcaseAlt: string;
+    galleryTitle: string;
+    gallery: {
+      excavation: GalleryPhoto;
+      rebarPlumbing: GalleryPhoto;
+      plaster: GalleryPhoto;
+      interiorFinish: GalleryPhoto;
+    };
   };
   maintenance: {
     photoPlaceholder: string;
@@ -135,8 +147,7 @@ export const ui: Record<Locale, UiText> = {
         "From building your dream pool to keeping it crystal clear, Garma Pools helps homeowners maintain and enjoy their pools year-round.",
       ctaPrimary: "Get a Free Quote",
       ctaSecondary: "Call Now",
-      photoPlaceholder:
-        "Professional photo of a residential pool in Texas (replace with a real Garma Pools project photo)",
+      photoAlt: "Completed residential pool and spa built by Garma Pools",
     },
     services: {
       eyebrow: "What We Do",
@@ -197,7 +208,26 @@ export const ui: Record<Locale, UiText> = {
       description: "Transform your backyard into a place to relax, entertain and enjoy with family.",
       unconfirmedBadge: "Not yet confirmed with Garma Pools",
       ctaLabel: "Start Your Pool Project",
-      photoPlaceholder: "Pool construction / build-in-progress photo",
+      showcaseAlt: "Completed pool shell with travertine decking, ready to fill",
+      galleryTitle: "From the ground up",
+      gallery: {
+        excavation: {
+          caption: "Excavation",
+          alt: "Pool excavation and layout at the start of a Garma Pools build",
+        },
+        rebarPlumbing: {
+          caption: "Steel & Plumbing",
+          alt: "Rebar structure and plumbing installed before the concrete pour",
+        },
+        plaster: {
+          caption: "Plaster Finish",
+          alt: "Garma Pools crew applying the plaster finish to a pool shell",
+        },
+        interiorFinish: {
+          caption: "Interior & Tile Finish",
+          alt: "Finished pool interior and waterline tile, ready to fill",
+        },
+      },
     },
     maintenance: {
       photoPlaceholder: "Pool technician performing maintenance / water testing",
@@ -270,8 +300,7 @@ export const ui: Record<Locale, UiText> = {
         "Desde construir la alberca de tus sueños hasta mantenerla cristalina, Garma Pools ayuda a los dueños de casa a mantener y disfrutar sus albercas todo el año.",
       ctaPrimary: "Cotización Gratis",
       ctaSecondary: "Llamar Ahora",
-      photoPlaceholder:
-        "Foto profesional de una alberca residencial en Texas (reemplazar con una foto real de un proyecto de Garma Pools)",
+      photoAlt: "Alberca residencial y spa terminados, construidos por Garma Pools",
     },
     services: {
       eyebrow: "Qué Hacemos",
@@ -332,7 +361,26 @@ export const ui: Record<Locale, UiText> = {
       description: "Transforma tu patio en un lugar para relajarte, convivir y disfrutar en familia.",
       unconfirmedBadge: "Aún no confirmado con Garma Pools",
       ctaLabel: "Inicia Tu Proyecto de Alberca",
-      photoPlaceholder: "Foto de construcción de alberca / obra en proceso",
+      showcaseAlt: "Alberca terminada con deck de travertino, lista para llenarse",
+      galleryTitle: "Desde cero hasta el resultado final",
+      gallery: {
+        excavation: {
+          caption: "Excavación",
+          alt: "Excavación y trazo de una alberca al inicio de un proyecto de Garma Pools",
+        },
+        rebarPlumbing: {
+          caption: "Acero y Plomería",
+          alt: "Estructura de varilla y plomería instalada antes de colar el concreto",
+        },
+        plaster: {
+          caption: "Acabado de Plaster",
+          alt: "Equipo de Garma Pools aplicando el acabado de plaster en una alberca",
+        },
+        interiorFinish: {
+          caption: "Interior y Azulejo",
+          alt: "Interior de alberca terminado con azulejo en la línea de agua, lista para llenarse",
+        },
+      },
     },
     maintenance: {
       photoPlaceholder: "Técnico de albercas realizando mantenimiento / prueba de agua",
