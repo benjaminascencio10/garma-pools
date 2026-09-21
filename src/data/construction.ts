@@ -1,3 +1,5 @@
+import type { Locale } from "@/i18n/locale";
+
 export interface ConstructionCategory {
   name: string;
   description: string;
@@ -6,30 +8,59 @@ export interface ConstructionCategory {
   confirmed: boolean;
 }
 
-export const constructionCategories: ConstructionCategory[] = [
-  {
-    name: "Custom Pools",
-    description: "New residential pools designed around your backyard.",
-    confirmed: true,
-  },
-  {
-    name: "Pool Remodeling",
-    description: "Refresh and update an existing pool.",
-    confirmed: false,
-  },
-  {
-    name: "Pool Equipment",
-    description: "Pumps, filters, heaters, and automation.",
-    confirmed: true,
-  },
-  {
-    name: "Pool Deck / Surroundings",
-    description: "Decking and surrounding hardscape for your pool area.",
-    confirmed: false,
-  },
-  {
-    name: "Water Features",
-    description: "Waterfalls, fountains, and accent lighting.",
-    confirmed: false,
-  },
-];
+export const constructionCategories: Record<Locale, ConstructionCategory[]> = {
+  en: [
+    {
+      name: "Custom Pools",
+      description: "New residential pools designed around your backyard.",
+      confirmed: true,
+    },
+    {
+      name: "Pool Remodeling",
+      description: "Refresh and update an existing pool.",
+      confirmed: false,
+    },
+    {
+      name: "Pool Equipment",
+      description: "Pumps, filters, heaters, and automation.",
+      confirmed: true,
+    },
+    {
+      name: "Pool Deck / Surroundings",
+      description: "Decking and surrounding hardscape for your pool area.",
+      confirmed: false,
+    },
+    {
+      name: "Water Features",
+      description: "Waterfalls, fountains, and accent lighting.",
+      confirmed: false,
+    },
+  ],
+  es: [
+    {
+      name: "Albercas Personalizadas",
+      description: "Albercas residenciales nuevas diseñadas para tu patio.",
+      confirmed: true,
+    },
+    {
+      name: "Remodelación de Albercas",
+      description: "Renueva y actualiza una alberca existente.",
+      confirmed: false,
+    },
+    {
+      name: "Equipo para Alberca",
+      description: "Bombas, filtros, calentadores y automatización.",
+      confirmed: true,
+    },
+    {
+      name: "Deck / Áreas Alrededor de la Alberca",
+      description: "Deck y acabados alrededor del área de tu alberca.",
+      confirmed: false,
+    },
+    {
+      name: "Características de Agua",
+      description: "Cascadas, fuentes e iluminación decorativa.",
+      confirmed: false,
+    },
+  ],
+};

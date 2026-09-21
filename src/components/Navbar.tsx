@@ -3,19 +3,13 @@
 import { useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { company } from "@/data/company";
+import { company, companyText } from "@/data/company";
+import { ui } from "@/i18n/ui";
+import type { Locale } from "@/i18n/locale";
 
-const navLinks = [
-  { label: "Construction", href: "#construction" },
-  { label: "Maintenance", href: "#maintenance" },
-  { label: "Products", href: "#products" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Service Area", href: "#service-area" },
-  { label: "Contact", href: "#contact" },
-];
-
-export function Navbar() {
+export function Navbar({ locale }: { locale: Locale }) {
   const [open, setOpen] = useState(false);
+  const t = ui[locale];
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-navy-900/95 backdrop-blur supports-[backdrop-filter]:bg-navy-900/80">
@@ -25,12 +19,12 @@ export function Navbar() {
             {company.name.toUpperCase()}
           </span>
           <span className="text-[10px] font-medium tracking-[0.2em] text-pool-100 uppercase">
-            {company.tagline}
+            {companyText[locale].tagline}
           </span>
         </a>
 
         <nav className="hidden items-center gap-6 lg:flex">
-          {navLinks.map((link) => (
+          {t.nav.links.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -53,25 +47,39 @@ export function Navbar() {
             href="#quote"
             className="rounded-full bg-pool-500 px-5 py-2.5 text-sm font-bold text-navy-950 shadow-sm transition hover:bg-pool-400"
           >
-            Get a Quote
+            {t.nav.getQuote}
+          </a>
+          <a
+            href={t.nav.languageSwitchHref}
+            className="rounded-full border border-white/20 px-3 py-2.5 text-xs font-bold text-white/80 transition hover:border-white/40 hover:text-white"
+          >
+            {t.nav.languageSwitchLabel}
           </a>
         </div>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="inline-flex items-center justify-center rounded-md p-2 text-white lg:hidden"
-          aria-expanded={open}
-          aria-label="Toggle navigation menu"
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <a
+            href={t.nav.languageSwitchHref}
+            className="rounded-full border border-white/20 px-2.5 py-1.5 text-xs font-bold text-white/80"
+          >
+            {t.nav.languageSwitchLabel}
+          </a>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="inline-flex items-center justify-center rounded-md p-2 text-white"
+            aria-expanded={open}
+            aria-label="Toggle navigation menu"
+          >
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </Container>
 
       {open && (
         <div className="border-t border-white/10 bg-navy-900 lg:hidden">
           <Container className="flex flex-col gap-1 py-4">
-            {navLinks.map((link) => (
+            {t.nav.links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -87,14 +95,14 @@ export function Navbar() {
                 onClick={() => setOpen(false)}
                 className="rounded-full bg-pool-500 px-5 py-3 text-center text-sm font-bold text-navy-950"
               >
-                Get a Quote
+                {t.nav.getQuote}
               </a>
               <a
                 href={company.phoneHref}
                 className="flex items-center justify-center gap-2 rounded-full border border-white/20 px-5 py-3 text-center text-sm font-bold text-white"
               >
                 <Phone className="h-4 w-4" aria-hidden />
-                Call {company.phone}
+                {t.stickyCta.callPrefix} {company.phone}
               </a>
             </div>
           </Container>

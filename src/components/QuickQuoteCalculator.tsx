@@ -3,12 +3,21 @@
 import { useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { quickQuoteCards, maintenancePriceTable, type PoolSize, type Frequency } from "@/data/quickQuote";
+import {
+  quickQuoteCards,
+  maintenancePriceTable,
+  poolSizes,
+  frequencies,
+  poolSizeLabels,
+  frequencyLabels,
+  type PoolSize,
+  type Frequency,
+} from "@/data/quickQuote";
+import { ui } from "@/i18n/ui";
+import type { Locale } from "@/i18n/locale";
 
-const poolSizes: PoolSize[] = ["Small", "Medium", "Large"];
-const frequencies: Frequency[] = ["Weekly", "Bi-weekly", "One-time"];
-
-export function QuickQuoteCalculator() {
+export function QuickQuoteCalculator({ locale }: { locale: Locale }) {
+  const t = ui[locale].quickQuote;
   const [poolSize, setPoolSize] = useState<PoolSize>("Medium");
   const [frequency, setFrequency] = useState<Frequency>("Weekly");
 
@@ -17,14 +26,10 @@ export function QuickQuoteCalculator() {
   return (
     <section className="bg-sky-50 py-20 sm:py-24">
       <Container className="flex flex-col gap-12">
-        <SectionHeading
-          eyebrow="Quick Quote"
-          title="Find the Right Service for Your Pool"
-          description="Not sure where to start? Pick what fits your pool best."
-        />
+        <SectionHeading eyebrow={t.eyebrow} title={t.title} description={t.description} />
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {quickQuoteCards.map((card) => (
+          {quickQuoteCards[locale].map((card) => (
             <a
               key={card.id}
               href={card.href}
@@ -37,13 +42,11 @@ export function QuickQuoteCalculator() {
         </div>
 
         <div className="mx-auto flex w-full max-w-2xl flex-col gap-6 rounded-3xl border border-navy-900/10 bg-white p-6 sm:p-8">
-          <h3 className="text-lg font-extrabold text-navy-900">
-            Maintenance estimate calculator
-          </h3>
+          <h3 className="text-lg font-extrabold text-navy-900">{t.calculatorTitle}</h3>
 
           <div className="grid gap-6 sm:grid-cols-2">
             <div>
-              <p className="mb-2 text-sm font-semibold text-navy-900">Pool size</p>
+              <p className="mb-2 text-sm font-semibold text-navy-900">{t.poolSizeLabel}</p>
               <div className="flex gap-2">
                 {poolSizes.map((size) => (
                   <button
@@ -56,14 +59,14 @@ export function QuickQuoteCalculator() {
                         : "border-navy-900/10 text-navy-700/70 hover:border-navy-900/20"
                     }`}
                   >
-                    {size}
+                    {poolSizeLabels[locale][size]}
                   </button>
                 ))}
               </div>
             </div>
 
             <div>
-              <p className="mb-2 text-sm font-semibold text-navy-900">Frequency</p>
+              <p className="mb-2 text-sm font-semibold text-navy-900">{t.frequencyLabel}</p>
               <div className="flex gap-2">
                 {frequencies.map((freq) => (
                   <button
@@ -76,7 +79,7 @@ export function QuickQuoteCalculator() {
                         : "border-navy-900/10 text-navy-700/70 hover:border-navy-900/20"
                     }`}
                   >
-                    {freq}
+                    {frequencyLabels[locale][freq]}
                   </button>
                 ))}
               </div>
@@ -85,23 +88,24 @@ export function QuickQuoteCalculator() {
 
           <div className="flex flex-col items-center gap-3 rounded-2xl bg-navy-950 p-6 text-center text-white">
             <span className="text-xs font-bold tracking-widest text-pool-100 uppercase">
-              Estimated quote
+              {t.estimatedQuoteLabel}
             </span>
             {estimatedPrice !== null ? (
-              <span className="text-3xl font-extrabold">${estimatedPrice}/mo</span>
+              <span className="text-3xl font-extrabold">
+                ${estimatedPrice}
+                {t.perMonthSuffix}
+              </span>
             ) : (
-              <span className="text-2xl font-extrabold">Request a Custom Quote</span>
+              <span className="text-2xl font-extrabold">{t.customQuoteLabel}</span>
             )}
             <p className="text-sm text-white/70">
-              {estimatedPrice !== null
-                ? "Estimated price — final quote confirmed by Garma Pools."
-                : "Pricing for this option isn't published yet. Request a quote and we'll follow up."}
+              {estimatedPrice !== null ? t.helperWithPrice : t.helperWithoutPrice}
             </p>
             <a
               href="#quote"
               className="mt-2 rounded-full bg-pool-500 px-6 py-3 text-sm font-bold text-navy-950 hover:bg-pool-400"
             >
-              Get My Quote
+              {t.ctaLabel}
             </a>
           </div>
         </div>

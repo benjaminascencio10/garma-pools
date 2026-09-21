@@ -2,19 +2,19 @@ import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { mainServices } from "@/data/services";
+import { ui } from "@/i18n/ui";
+import type { Locale } from "@/i18n/locale";
 
-export function Services() {
+export function Services({ locale }: { locale: Locale }) {
+  const t = ui[locale].services;
+
   return (
     <section className="bg-white py-20 sm:py-24">
       <Container className="flex flex-col gap-12">
-        <SectionHeading
-          eyebrow="What We Do"
-          title="Everything your pool needs, in one place"
-          description="Whether you're starting a new project or keeping an existing pool in shape, Garma Pools has you covered."
-        />
+        <SectionHeading eyebrow={t.eyebrow} title={t.title} description={t.description} />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {mainServices.map((service) => {
+          {mainServices[locale].map((service) => {
             const Icon = service.icon;
             return (
               <div

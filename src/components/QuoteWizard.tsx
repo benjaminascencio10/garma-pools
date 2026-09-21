@@ -6,12 +6,14 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import {
   quoteFieldsByService,
-  quoteServiceLabels,
+  getQuoteServiceLabels,
   quoteServiceOptions,
   type QuoteServiceId,
 } from "@/data/quoteWizard";
 import { company } from "@/data/company";
 import { submitQuoteRequest, type QuoteContactInfo } from "@/lib/quote";
+import { ui } from "@/i18n/ui";
+import type { Locale } from "@/i18n/locale";
 
 type Step = 1 | 2 | 3 | 4;
 
@@ -23,7 +25,12 @@ const emptyContact: QuoteContactInfo = {
   zip: "",
 };
 
-export function QuoteWizard() {
+export function QuoteWizard({ locale }: { locale: Locale }) {
+  const t = ui[locale].quoteWizard;
+  const options = quoteServiceOptions[locale];
+  const fieldsByService = quoteFieldsByService[locale];
+  const serviceLabels = getQuoteServiceLabels(locale);
+
   const [step, setStep] = useState<Step>(1);
   const [service, setService] = useState<QuoteServiceId | null>(null);
   const [details, setDetails] = useState<Record<string, string>>({});
@@ -31,7 +38,7 @@ export function QuoteWizard() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
 
-  const fields = service ? quoteFieldsByService[service] : [];
+  const fields = service ? fieldsByService[service] : [];
 
   function selectService(id: QuoteServiceId) {
     setService(id);
@@ -48,7 +55,7 @@ export function QuoteWizard() {
     const nextErrors: Record<string, string> = {};
     for (const field of fields) {
       if (field.required && !details[field.name]?.trim()) {
-        nextErrors[field.name] = "Required";
+        nextErrors[field.name] = t.requiredError;
       }
     }
     setErrors(nextErrors);
@@ -57,13 +64,13 @@ export function QuoteWizard() {
 
   function validateStep3() {
     const nextErrors: Record<string, string> = {};
-    if (!contact.firstName.trim()) nextErrors.firstName = "Required";
-    if (!contact.lastName.trim()) nextErrors.lastName = "Required";
-    if (!contact.phone.trim()) nextErrors.phone = "Required";
+    if (!contact.firstName.trim()) nextErrors.firstName = t.requiredError;
+    if (!contact.lastName.trim()) nextErrors.lastName = t.requiredError;
+    if (!contact.phone.trim()) nextErrors.phone = t.requiredError;
     if (!contact.email.trim()) {
-      nextErrors.email = "Required";
+      nextErrors.email = t.requiredError;
     } else if (!/^\S+@\S+\.\S+$/.test(contact.email)) {
-      nextErrors.email = "Enter a valid email";
+      nextErrors.email = t.emailError;
     }
     setErrors(nextErrors);
     return Object.keys(nextErrors).length === 0;
@@ -96,21 +103,16 @@ export function QuoteWizard() {
   return (
     <section id="quote" className="bg-navy-950 py-20 text-white sm:py-24">
       <Container className="flex flex-col gap-10">
-        <SectionHeading
-          eyebrow="Get Started"
-          title="Get Your Pool Quote"
-          description="Tell us what you need and we'll help you find the right solution."
-          light
-        />
+        <SectionHeading eyebrow={t.eyebrow} title={t.title} description={t.description} light />
 
-        {step < 4 && <StepIndicator step={step} />}
+        {step < 4 && <StepIndicator step={step} labels={t.stepLabels} />}
 
         <div className="mx-auto w-full max-w-3xl rounded-3xl bg-white p-6 text-navy-900 shadow-xl sm:p-10">
           {step === 1 && (
             <div className="flex flex-col gap-6">
-              <h3 className="text-xl font-extrabold">Step 1 — What do you need?</h3>
+              <h3 className="text-xl font-extrabold">{t.step1Title}</h3>
               <div className="grid gap-4 sm:grid-cols-2">
-                {quoteServiceOptions.map((option) => {
+                {options.map((option) => {
                   const Icon = option.icon;
                   return (
                     <button
@@ -139,11 +141,11 @@ export function QuoteWizard() {
                 className="inline-flex items-center gap-1 text-sm font-semibold text-navy-700/70 hover:text-navy-900"
               >
                 <ChevronLeft className="h-4 w-4" aria-hidden />
-                Back
+                {t.backLabel}
               </button>
-              <h3 className="text-xl font-extrabold">Step 2 — Tell us about your pool</h3>
+              <h3 className="text-xl font-extrabold">{t.step2TitlePrefix}</h3>
               <p className="text-sm text-navy-700/70">
-                Service selected: <span className="font-bold">{quoteServiceLabels[service]}</span>
+                {t.serviceSelectedLabel} <span className="font-bold">{serviceLabels[service]}</span>
               </p>
 
               <div className="grid gap-5 sm:grid-cols-2">
@@ -162,7 +164,7 @@ export function QuoteWizard() {
                         onChange={(e) => updateDetail(field.name, e.target.value)}
                         className="w-full rounded-xl border border-navy-900/15 px-4 py-3 text-sm focus:border-pool-500 focus:outline-none"
                       >
-                        <option value="">Select...</option>
+                        <option value="">{t.selectPlaceholder}</option>
                         {field.options?.map((opt) => (
                           <option key={opt} value={opt}>
                             {opt}
@@ -198,7 +200,7 @@ export function QuoteWizard() {
                 onClick={() => validateStep2() && setStep(3)}
                 className="mt-2 rounded-full bg-pool-500 px-6 py-3.5 text-sm font-bold text-navy-950 transition hover:bg-pool-400"
               >
-                Continue
+                {t.continueLabel}
               </button>
             </div>
           )}
@@ -211,27 +213,27 @@ export function QuoteWizard() {
                 className="inline-flex items-center gap-1 text-sm font-semibold text-navy-700/70 hover:text-navy-900"
               >
                 <ChevronLeft className="h-4 w-4" aria-hidden />
-                Back
+                {t.backLabel}
               </button>
-              <h3 className="text-xl font-extrabold">Step 3 — Your contact information</h3>
+              <h3 className="text-xl font-extrabold">{t.step3Title}</h3>
 
               <div className="grid gap-5 sm:grid-cols-2">
                 <TextField
-                  label="First Name"
+                  label={t.contactLabels.firstName}
                   value={contact.firstName}
                   onChange={(v) => setContact((p) => ({ ...p, firstName: v }))}
                   error={errors.firstName}
                   required
                 />
                 <TextField
-                  label="Last Name"
+                  label={t.contactLabels.lastName}
                   value={contact.lastName}
                   onChange={(v) => setContact((p) => ({ ...p, lastName: v }))}
                   error={errors.lastName}
                   required
                 />
                 <TextField
-                  label="Phone"
+                  label={t.contactLabels.phone}
                   type="tel"
                   value={contact.phone}
                   onChange={(v) => setContact((p) => ({ ...p, phone: v }))}
@@ -239,7 +241,7 @@ export function QuoteWizard() {
                   required
                 />
                 <TextField
-                  label="Email"
+                  label={t.contactLabels.email}
                   type="email"
                   value={contact.email}
                   onChange={(v) => setContact((p) => ({ ...p, email: v }))}
@@ -254,7 +256,7 @@ export function QuoteWizard() {
                 onClick={handleSubmit}
                 className="mt-2 rounded-full bg-pool-500 px-6 py-3.5 text-sm font-bold text-navy-950 transition hover:bg-pool-400 disabled:opacity-60"
               >
-                {submitting ? "Sending..." : "Request My Quote"}
+                {submitting ? t.sendingLabel : t.submitLabel}
               </button>
             </div>
           )}
@@ -262,25 +264,22 @@ export function QuoteWizard() {
           {step === 4 && (
             <div className="flex flex-col items-center gap-5 py-6 text-center">
               <CheckCircle2 className="h-14 w-14 text-pool-500" aria-hidden />
-              <h3 className="text-2xl font-extrabold">Thank You!</h3>
-              <p className="max-w-md text-navy-700/80">
-                Your request has been received. A Garma Pools representative will
-                contact you to discuss your project.
-              </p>
+              <h3 className="text-2xl font-extrabold">{t.thankYouTitle}</h3>
+              <p className="max-w-md text-navy-700/80">{t.thankYouBody}</p>
               <div className="mt-2 flex flex-col gap-3 sm:flex-row">
                 <a
                   href={company.phoneHref}
                   className="flex items-center justify-center gap-2 rounded-full bg-pool-500 px-6 py-3.5 text-sm font-bold text-navy-950 hover:bg-pool-400"
                 >
                   <Phone className="h-4 w-4" aria-hidden />
-                  Call Garma Pools
+                  {t.callButtonLabel}
                 </a>
                 <button
                   type="button"
                   onClick={reset}
                   className="rounded-full border-2 border-navy-900/15 px-6 py-3.5 text-sm font-bold text-navy-900 hover:bg-navy-900/5"
                 >
-                  Back to Home
+                  {t.backHomeLabel}
                 </button>
               </div>
             </div>
@@ -291,8 +290,7 @@ export function QuoteWizard() {
   );
 }
 
-function StepIndicator({ step }: { step: Step }) {
-  const labels = ["Service", "Pool Details", "Contact Info"];
+function StepIndicator({ step, labels }: { step: Step; labels: [string, string, string] }) {
   return (
     <div className="mx-auto flex w-full max-w-3xl items-center justify-center gap-2 sm:gap-4">
       {labels.map((label, i) => {

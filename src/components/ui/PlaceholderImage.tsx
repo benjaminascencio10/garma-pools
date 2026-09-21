@@ -8,10 +8,12 @@ import { ImageIcon } from "lucide-react";
  */
 export function PlaceholderImage({
   label,
+  caption = "Photo placeholder",
   className = "",
   dark = false,
 }: {
   label: string;
+  caption?: string;
   className?: string;
   dark?: boolean;
 }) {
@@ -25,7 +27,7 @@ export function PlaceholderImage({
     >
       <ImageIcon className="h-8 w-8 opacity-60" aria-hidden />
       <span className="px-4 text-xs font-semibold tracking-wide uppercase opacity-80">
-        Photo placeholder
+        {caption}
       </span>
       <span className="px-6 text-xs opacity-70">{label}</span>
     </div>

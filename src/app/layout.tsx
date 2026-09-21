@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { company } from "@/data/company";
-import { getLocalBusinessSchema } from "@/lib/schema";
+import { LangSync } from "@/components/LangSync";
 import "./globals.css";
 
 const inter = Inter({
@@ -49,16 +49,11 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
-  const localBusinessSchema = getLocalBusinessSchema();
-
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
+        <LangSync />
         {children}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-        />
       </body>
     </html>
   );
