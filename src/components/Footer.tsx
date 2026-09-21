@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Phone } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { FacebookIcon, InstagramIcon, TikTokIcon } from "@/components/ui/SocialIcons";
@@ -23,8 +24,19 @@ export function Footer({ locale }: { locale: Locale }) {
       <Container className="flex flex-col gap-10">
         <div className="flex flex-col gap-8 sm:flex-row sm:justify-between">
           <div>
-            <p className="text-xl font-extrabold">{company.name.toUpperCase()}</p>
-            <p className="text-sm font-medium text-pool-100">{text.tagline}</p>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/images/logo.jpg"
+                alt={company.name}
+                width={56}
+                height={56}
+                className="h-14 w-14 rounded-full"
+              />
+              <div>
+                <p className="text-xl font-extrabold">{company.name.toUpperCase()}</p>
+                <p className="text-sm font-medium text-pool-100">{text.tagline}</p>
+              </div>
+            </div>
             <a
               href={company.phoneHref}
               className="mt-3 flex items-center gap-2 text-sm font-bold text-white/85 hover:text-white"

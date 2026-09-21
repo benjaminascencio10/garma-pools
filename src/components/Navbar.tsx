@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Menu, Phone, X } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { company, companyText } from "@/data/company";
+import { company } from "@/data/company";
 import { ui } from "@/i18n/ui";
 import type { Locale } from "@/i18n/locale";
 
@@ -14,12 +15,17 @@ export function Navbar({ locale }: { locale: Locale }) {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-navy-900/95 backdrop-blur supports-[backdrop-filter]:bg-navy-900/80">
       <Container className="flex h-16 items-center justify-between gap-4">
-        <a href="#top" className="flex flex-col leading-tight">
-          <span className="text-lg font-extrabold tracking-tight text-white">
+        <a href="#top" className="flex items-center gap-2">
+          <Image
+            src="/images/logo.jpg"
+            alt={company.name}
+            width={44}
+            height={44}
+            className="h-11 w-11 rounded-full"
+            priority
+          />
+          <span className="hidden text-lg font-extrabold tracking-tight text-white sm:block">
             {company.name.toUpperCase()}
-          </span>
-          <span className="text-[10px] font-medium tracking-[0.2em] text-pool-100 uppercase">
-            {companyText[locale].tagline}
           </span>
         </a>
 
