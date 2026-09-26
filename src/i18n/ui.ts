@@ -85,6 +85,18 @@ export interface UiText {
       interiorFinish: GalleryPhoto;
     };
   };
+  projects: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    projectLabel: string; // combined with a number, e.g. "Project 1"
+    stages: {
+      excavation: GalleryPhoto;
+      rebarPlumbing: GalleryPhoto;
+      plaster: GalleryPhoto;
+      finished: GalleryPhoto;
+    };
+  };
   maintenance: {
     photoAlt: string;
     eyebrow: string;
@@ -132,6 +144,7 @@ export const ui: Record<Locale, UiText> = {
     nav: {
       links: [
         { label: "Construction", href: "#construction" },
+        { label: "Projects", href: "#projects" },
         { label: "Maintenance", href: "#maintenance" },
         { label: "Products", href: "#products" },
         { label: "How It Works", href: "#how-it-works" },
@@ -226,8 +239,33 @@ export const ui: Record<Locale, UiText> = {
           alt: "Garma Pools crew applying the plaster finish to a pool shell",
         },
         interiorFinish: {
-          caption: "Interior & Tile Finish",
-          alt: "Finished pool interior and waterline tile, ready to fill",
+          caption: "Finished Pool & Spa",
+          alt: "Completed Garma Pools backyard pool and spa, full and ready to enjoy",
+        },
+      },
+    },
+    projects: {
+      eyebrow: "Our Work",
+      title: "See a Project From Start to Finish",
+      description:
+        "Follow one of our builds through every stage — from the first dig to the final fill.",
+      projectLabel: "Project",
+      stages: {
+        excavation: {
+          caption: "Excavation",
+          alt: "Pool excavation and layout at the start of a Garma Pools build",
+        },
+        rebarPlumbing: {
+          caption: "Steel & Plumbing",
+          alt: "Rebar structure and plumbing installed before the concrete pour",
+        },
+        plaster: {
+          caption: "Plaster Finish",
+          alt: "Freshly plastered pool shell with steps, ready for water",
+        },
+        finished: {
+          caption: "Finished Pool & Spa",
+          alt: "Completed Garma Pools backyard pool and spa, full and ready to enjoy",
         },
       },
     },
@@ -287,6 +325,7 @@ export const ui: Record<Locale, UiText> = {
     nav: {
       links: [
         { label: "Construcción", href: "#construction" },
+        { label: "Proyectos", href: "#projects" },
         { label: "Mantenimiento", href: "#maintenance" },
         { label: "Productos", href: "#products" },
         { label: "Cómo Funciona", href: "#how-it-works" },
@@ -381,8 +420,33 @@ export const ui: Record<Locale, UiText> = {
           alt: "Equipo de Garma Pools aplicando el acabado de plaster en una alberca",
         },
         interiorFinish: {
-          caption: "Interior y Azulejo",
-          alt: "Interior de alberca terminado con azulejo en la línea de agua, lista para llenarse",
+          caption: "Alberca y Spa Terminados",
+          alt: "Alberca y spa de patio trasero de Garma Pools terminados, llenos y listos para disfrutar",
+        },
+      },
+    },
+    projects: {
+      eyebrow: "Nuestro Trabajo",
+      title: "Mira un Proyecto de Inicio a Fin",
+      description:
+        "Sigue una de nuestras construcciones en cada etapa — desde la primera excavación hasta el llenado final.",
+      projectLabel: "Proyecto",
+      stages: {
+        excavation: {
+          caption: "Excavación",
+          alt: "Excavación y trazo de una alberca al inicio de un proyecto de Garma Pools",
+        },
+        rebarPlumbing: {
+          caption: "Acero y Plomería",
+          alt: "Estructura de varilla y plomería instalada antes de colar el concreto",
+        },
+        plaster: {
+          caption: "Acabado de Plaster",
+          alt: "Cascarón de alberca recién aplanado con escalones, listo para el agua",
+        },
+        finished: {
+          caption: "Alberca y Spa Terminados",
+          alt: "Alberca y spa de patio trasero de Garma Pools terminados, llenos y listos para disfrutar",
         },
       },
     },

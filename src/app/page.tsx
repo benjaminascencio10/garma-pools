@@ -6,6 +6,7 @@ import { QuoteWizard } from "@/components/QuoteWizard";
 import { QuickQuoteCalculator } from "@/components/QuickQuoteCalculator";
 import { HowItWorks } from "@/components/HowItWorks";
 import { ConstructionSection } from "@/components/ConstructionSection";
+import { ProjectsSection } from "@/components/ProjectsSection";
 import { MaintenanceSection } from "@/components/MaintenanceSection";
 import { ProductsSection } from "@/components/ProductsSection";
 import { ServiceArea } from "@/components/ServiceArea";
@@ -43,6 +44,7 @@ export default function Home() {
         <QuickQuoteCalculator locale="en" />
         <HowItWorks locale="en" />
         <ConstructionSection locale="en" />
+        <ProjectsSection locale="en" />
         <MaintenanceSection locale="en" />
         <ProductsSection locale="en" />
         <ServiceArea locale="en" />
