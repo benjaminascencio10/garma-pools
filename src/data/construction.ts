@@ -25,16 +25,6 @@ export const constructionCategories: Record<Locale, ConstructionCategory[]> = {
       description: "Pumps, filters, heaters, and automation.",
       confirmed: true,
     },
-    {
-      name: "Pool Deck / Surroundings",
-      description: "Decking and surrounding hardscape for your pool area.",
-      confirmed: false,
-    },
-    {
-      name: "Water Features",
-      description: "Waterfalls, fountains, and accent lighting.",
-      confirmed: false,
-    },
   ],
   es: [
     {
@@ -51,16 +41,6 @@ export const constructionCategories: Record<Locale, ConstructionCategory[]> = {
       name: "Equipo para Alberca",
       description: "Bombas, filtros, calentadores y automatización.",
       confirmed: true,
-    },
-    {
-      name: "Deck / Áreas Alrededor de la Alberca",
-      description: "Deck y acabados alrededor del área de tu alberca.",
-      confirmed: false,
-    },
-    {
-      name: "Características de Agua",
-      description: "Cascadas, fuentes e iluminación decorativa.",
-      confirmed: false,
     },
   ],
 };

@@ -1,6 +1,6 @@
-import { MapPin } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ServiceAreaHeatMap } from "@/components/ServiceAreaHeatMap";
 import { serviceAreaCities } from "@/data/serviceAreas";
 import { companyText } from "@/data/company";
 import { ui } from "@/i18n/ui";
@@ -19,9 +19,17 @@ export function ServiceArea({ locale }: { locale: Locale }) {
           light
         />
 
-        <div className="flex h-56 w-full max-w-2xl flex-col items-center justify-center gap-2 rounded-3xl border-2 border-dashed border-white/20 bg-white/5">
-          <MapPin className="h-8 w-8 text-pool-100" aria-hidden />
-          <p className="text-sm font-semibold text-white/70">{t.mapPlaceholder}</p>
+        <ServiceAreaHeatMap ariaLabel={t.mapAriaLabel} unconfirmedTooltip={t.unconfirmedTooltip} />
+
+        <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-white/70">
+          <span className="flex items-center gap-1.5">
+            <span className="h-2.5 w-2.5 rounded-full bg-sand-500" aria-hidden />
+            {t.legendConfirmed}
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="h-2.5 w-2.5 rounded-full bg-pool-400/70" aria-hidden />
+            {t.legendUnconfirmed}
+          </span>
         </div>
 
         <div className="flex flex-wrap justify-center gap-3">

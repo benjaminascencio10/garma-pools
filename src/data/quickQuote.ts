@@ -1,10 +1,10 @@
 import type { Locale } from "@/i18n/locale";
 
 export type PoolSize = "Small" | "Medium" | "Large";
-export type Frequency = "Weekly" | "Bi-weekly" | "One-time";
+export type Frequency = "Weekly" | "One-time";
 
 export const poolSizes: PoolSize[] = ["Small", "Medium", "Large"];
-export const frequencies: Frequency[] = ["Weekly", "Bi-weekly", "One-time"];
+export const frequencies: Frequency[] = ["Weekly", "One-time"];
 
 export const poolSizeLabels: Record<Locale, Record<PoolSize, string>> = {
   en: { Small: "Small", Medium: "Medium", Large: "Large" },
@@ -12,8 +12,8 @@ export const poolSizeLabels: Record<Locale, Record<PoolSize, string>> = {
 };
 
 export const frequencyLabels: Record<Locale, Record<Frequency, string>> = {
-  en: { Weekly: "Weekly", "Bi-weekly": "Bi-weekly", "One-time": "One-time" },
-  es: { Weekly: "Semanal", "Bi-weekly": "Quincenal", "One-time": "Única vez" },
+  en: { Weekly: "Weekly", "One-time": "One-time" },
+  es: { Weekly: "Semanal", "One-time": "Única vez" },
 };
 
 // No real Garma Pools pricing exists yet. These are left as `null` on
@@ -21,9 +21,9 @@ export const frequencyLabels: Record<Locale, Record<Frequency, string>> = {
 // dollar figure. Once real prices are provided, fill in this table (in USD)
 // and the calculator will display them automatically.
 export const maintenancePriceTable: Record<PoolSize, Record<Frequency, number | null>> = {
-  Small: { Weekly: null, "Bi-weekly": null, "One-time": null },
-  Medium: { Weekly: null, "Bi-weekly": null, "One-time": null },
-  Large: { Weekly: null, "Bi-weekly": null, "One-time": null },
+  Small: { Weekly: null, "One-time": null },
+  Medium: { Weekly: null, "One-time": null },
+  Large: { Weekly: null, "One-time": null },
 };
 
 export interface QuickQuoteCard {

@@ -16,4 +16,13 @@ export const serviceAreaCities: ServiceAreaCity[] = [
   { name: "Edinburg", confirmed: false },
   { name: "Mission", confirmed: false },
   { name: "Pharr", confirmed: false },
+  { name: "South Padre Island", confirmed: true },
+  { name: "Combes", confirmed: true },
+  { name: "Rio Hondo", confirmed: true },
+  { name: "Los Fresnos", confirmed: true },
+  { name: "Bayview", confirmed: true },
+  { name: "Laguna Vista", confirmed: true },
+  { name: "Port Isabel", confirmed: true },
+  { name: "Arroyo City", confirmed: true },
+  { name: "Rancho Viejo", confirmed: true },
 ];

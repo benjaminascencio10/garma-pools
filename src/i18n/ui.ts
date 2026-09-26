@@ -103,7 +103,9 @@ export interface UiText {
   serviceArea: {
     eyebrow: string;
     titlePrefix: string; // combined with serviceRegion
-    mapPlaceholder: string;
+    mapAriaLabel: string;
+    legendConfirmed: string;
+    legendUnconfirmed: string;
     unconfirmedFootnote: string;
     unconfirmedTooltip: string;
   };
@@ -249,7 +251,9 @@ export const ui: Record<Locale, UiText> = {
     serviceArea: {
       eyebrow: "Where We Work",
       titlePrefix: "Serving the",
-      mapPlaceholder: "Map placeholder — embed a real service-area map here later",
+      mapAriaLabel: "Heat map of Garma Pools service area coverage",
+      legendConfirmed: "Confirmed coverage",
+      legendUnconfirmed: "Coverage not yet confirmed",
       unconfirmedFootnote:
         "Coverage by city is not yet confirmed. Contact us to check availability in your area.",
       unconfirmedTooltip: "Coverage not yet confirmed",
@@ -402,7 +406,9 @@ export const ui: Record<Locale, UiText> = {
     serviceArea: {
       eyebrow: "Dónde Trabajamos",
       titlePrefix: "Atendiendo",
-      mapPlaceholder: "Mapa próximamente — se integrará un mapa real del área de servicio",
+      mapAriaLabel: "Mapa de calor de la cobertura de servicio de Garma Pools",
+      legendConfirmed: "Cobertura confirmada",
+      legendUnconfirmed: "Cobertura aún no confirmada",
       unconfirmedFootnote:
         "La cobertura por ciudad aún no está confirmada. Contáctanos para verificar disponibilidad en tu área.",
       unconfirmedTooltip: "Cobertura aún no confirmada",

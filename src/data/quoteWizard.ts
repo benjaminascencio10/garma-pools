@@ -2,7 +2,6 @@ import type { LucideIcon } from "lucide-react";
 import {
   Wrench,
   Droplets,
-  Sparkles,
   ShoppingBag,
   HelpCircle,
   Hammer,
@@ -12,7 +11,6 @@ import type { Locale } from "@/i18n/locale";
 export type QuoteServiceId =
   | "new-pool"
   | "maintenance"
-  | "cleaning"
   | "repair"
   | "products"
   | "other";
@@ -36,14 +34,8 @@ export const quoteServiceOptions: Record<Locale, QuoteServiceOption[]> = {
     {
       id: "maintenance",
       icon: Droplets,
-      label: "Pool Maintenance",
-      description: "Ongoing cleaning and chemical balance service.",
-    },
-    {
-      id: "cleaning",
-      icon: Sparkles,
-      label: "Pool Cleaning",
-      description: "A one-time or occasional pool cleaning.",
+      label: "Pool Maintenance & Cleaning",
+      description: "Ongoing service or a one-time cleaning and chemical balance visit.",
     },
     {
       id: "repair",
@@ -74,14 +66,8 @@ export const quoteServiceOptions: Record<Locale, QuoteServiceOption[]> = {
     {
       id: "maintenance",
       icon: Droplets,
-      label: "Mantenimiento de Alberca",
-      description: "Servicio continuo de limpieza y balance químico.",
-    },
-    {
-      id: "cleaning",
-      icon: Sparkles,
-      label: "Limpieza de Alberca",
-      description: "Una limpieza única u ocasional de tu alberca.",
+      label: "Mantenimiento y Limpieza de Alberca",
+      description: "Servicio continuo o una visita única de limpieza y balance químico.",
     },
     {
       id: "repair",
@@ -130,13 +116,25 @@ export const quoteFieldsByService: Record<Locale, Record<QuoteServiceId, QuoteFi
         name: "backyardSize",
         label: "Approximate backyard size",
         type: "select",
-        options: ["Small", "Medium", "Large", "Not sure"],
+        options: [
+          "Under 800 sq ft",
+          "800–1,500 sq ft",
+          "1,500–3,000 sq ft",
+          "Over 3,000 sq ft",
+          "Not sure",
+        ],
       },
       {
         name: "poolSizePreference",
         label: "Pool size preference",
         type: "select",
-        options: ["Small", "Medium", "Large", "Not sure yet"],
+        options: [
+          "Small (10' x 20')",
+          "Medium (16' x 32')",
+          "Large (20' x 40')",
+          "Extra Large (25'+ x 50'+)",
+          "Not sure yet",
+        ],
       },
       {
         name: "desiredFeatures",
@@ -170,7 +168,13 @@ export const quoteFieldsByService: Record<Locale, Record<QuoteServiceId, QuoteFi
         name: "poolSize",
         label: "Pool size",
         type: "select",
-        options: ["Small", "Medium", "Large", "Not sure"],
+        options: [
+          "Small (10' x 20')",
+          "Medium (16' x 32')",
+          "Large (20' x 40')",
+          "Extra Large (25'+ x 50'+)",
+          "Not sure",
+        ],
       },
       {
         name: "propertyType",
@@ -180,37 +184,10 @@ export const quoteFieldsByService: Record<Locale, Record<QuoteServiceId, QuoteFi
       },
       {
         name: "frequency",
-        label: "Weekly / Bi-weekly / One-time",
-        type: "select",
-        options: ["Weekly", "Bi-weekly", "One-time"],
-      },
-      {
-        name: "zip",
-        label: "ZIP Code",
-        type: "text",
-        required: true,
-        placeholder: "78501",
-      },
-    ],
-    cleaning: [
-      {
-        name: "existingPool",
-        label: "Existing pool?",
+        label: "Weekly or one-time?",
         type: "select",
         required: true,
-        options: ["Yes", "No"],
-      },
-      {
-        name: "poolSize",
-        label: "Pool size",
-        type: "select",
-        options: ["Small", "Medium", "Large", "Not sure"],
-      },
-      {
-        name: "frequency",
-        label: "How often do you need cleaning?",
-        type: "select",
-        options: ["One-time", "Weekly", "Bi-weekly"],
+        options: ["Weekly", "One-time"],
       },
       {
         name: "zip",
@@ -305,13 +282,25 @@ export const quoteFieldsByService: Record<Locale, Record<QuoteServiceId, QuoteFi
         name: "backyardSize",
         label: "Tamaño aproximado del patio",
         type: "select",
-        options: ["Pequeño", "Mediano", "Grande", "No estoy seguro"],
+        options: [
+          "Menos de 800 pies²",
+          "800–1,500 pies²",
+          "1,500–3,000 pies²",
+          "Más de 3,000 pies²",
+          "No estoy seguro",
+        ],
       },
       {
         name: "poolSizePreference",
         label: "Tamaño de alberca preferido",
         type: "select",
-        options: ["Pequeña", "Mediana", "Grande", "Aún no estoy seguro"],
+        options: [
+          "Pequeña (10' x 20')",
+          "Mediana (16' x 32')",
+          "Grande (20' x 40')",
+          "Extra grande (25'+ x 50'+)",
+          "Aún no estoy seguro",
+        ],
       },
       {
         name: "desiredFeatures",
@@ -345,7 +334,13 @@ export const quoteFieldsByService: Record<Locale, Record<QuoteServiceId, QuoteFi
         name: "poolSize",
         label: "Tamaño de la alberca",
         type: "select",
-        options: ["Pequeña", "Mediana", "Grande", "No estoy seguro"],
+        options: [
+          "Pequeña (10' x 20')",
+          "Mediana (16' x 32')",
+          "Grande (20' x 40')",
+          "Extra grande (25'+ x 50'+)",
+          "No estoy seguro",
+        ],
       },
       {
         name: "propertyType",
@@ -355,37 +350,10 @@ export const quoteFieldsByService: Record<Locale, Record<QuoteServiceId, QuoteFi
       },
       {
         name: "frequency",
-        label: "Semanal / Quincenal / Única vez",
-        type: "select",
-        options: ["Semanal", "Quincenal", "Única vez"],
-      },
-      {
-        name: "zip",
-        label: "Código Postal",
-        type: "text",
-        required: true,
-        placeholder: "78501",
-      },
-    ],
-    cleaning: [
-      {
-        name: "existingPool",
-        label: "¿Alberca existente?",
+        label: "¿Semanal o única vez?",
         type: "select",
         required: true,
-        options: ["Sí", "No"],
-      },
-      {
-        name: "poolSize",
-        label: "Tamaño de la alberca",
-        type: "select",
-        options: ["Pequeña", "Mediana", "Grande", "No estoy seguro"],
-      },
-      {
-        name: "frequency",
-        label: "¿Con qué frecuencia necesitas limpieza?",
-        type: "select",
-        options: ["Única vez", "Semanal", "Quincenal"],
+        options: ["Semanal", "Única vez"],
       },
       {
         name: "zip",
