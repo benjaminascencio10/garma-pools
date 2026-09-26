@@ -1,6 +1,6 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { maintenanceBenefits } from "@/data/maintenance";
 import { ui } from "@/i18n/ui";
 import type { Locale } from "@/i18n/locale";
@@ -11,11 +11,15 @@ export function MaintenanceSection({ locale }: { locale: Locale }) {
   return (
     <section id="maintenance" className="bg-sky-50 py-20 sm:py-24">
       <Container className="grid gap-12 lg:grid-cols-2 lg:items-center">
-        <PlaceholderImage
-          label={t.photoPlaceholder}
-          caption={ui[locale].photoPlaceholderLabel}
-          className="order-2 h-80 w-full lg:order-1 lg:h-full"
-        />
+        <div className="relative order-2 h-80 w-full overflow-hidden rounded-2xl lg:order-1 lg:h-full">
+          <Image
+            src="/images/maintenance-pool.jpg"
+            alt={t.photoAlt}
+            fill
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="object-cover"
+          />
+        </div>
 
         <div className="order-1 flex flex-col gap-6 lg:order-2">
           <SectionHeading

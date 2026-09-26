@@ -86,7 +86,7 @@ export interface UiText {
     };
   };
   maintenance: {
-    photoPlaceholder: string;
+    photoAlt: string;
     eyebrow: string;
     title: string;
     description: string;
@@ -232,7 +232,7 @@ export const ui: Record<Locale, UiText> = {
       },
     },
     maintenance: {
-      photoPlaceholder: "Pool technician performing maintenance / water testing",
+      photoAlt: "Sparkling backyard pool and spa maintained by Garma Pools",
       eyebrow: "Pool Maintenance",
       title: "Keep Your Pool Ready to Enjoy",
       description:
@@ -387,7 +387,7 @@ export const ui: Record<Locale, UiText> = {
       },
     },
     maintenance: {
-      photoPlaceholder: "Técnico de albercas realizando mantenimiento / prueba de agua",
+      photoAlt: "Alberca y spa de patio trasero mantenidos por Garma Pools",
       eyebrow: "Mantenimiento de Albercas",
       title: "Mantén Tu Alberca Lista para Disfrutar",
       description:
