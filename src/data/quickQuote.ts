@@ -7,8 +7,16 @@ export const poolSizes: PoolSize[] = ["Small", "Medium", "Large"];
 export const frequencies: Frequency[] = ["Weekly", "One-time"];
 
 export const poolSizeLabels: Record<Locale, Record<PoolSize, string>> = {
-  en: { Small: "Small", Medium: "Medium", Large: "Large" },
-  es: { Small: "Pequeña", Medium: "Mediana", Large: "Grande" },
+  en: {
+    Small: "Small (10' x 20')",
+    Medium: "Medium (16' x 32')",
+    Large: "Large (20' x 40')",
+  },
+  es: {
+    Small: "Pequeña (10' x 20')",
+    Medium: "Mediana (16' x 32')",
+    Large: "Grande (20' x 40')",
+  },
 };
 
 export const frequencyLabels: Record<Locale, Record<Frequency, string>> = {

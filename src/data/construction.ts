@@ -18,7 +18,7 @@ export const constructionCategories: Record<Locale, ConstructionCategory[]> = {
     {
       name: "Pool Remodeling",
       description: "Refresh and update an existing pool.",
-      confirmed: false,
+      confirmed: true,
     },
     {
       name: "Pool Equipment",
@@ -35,7 +35,7 @@ export const constructionCategories: Record<Locale, ConstructionCategory[]> = {
     {
       name: "Remodelación de Albercas",
       description: "Renueva y actualiza una alberca existente.",
-      confirmed: false,
+      confirmed: true,
     },
     {
       name: "Equipo para Alberca",
