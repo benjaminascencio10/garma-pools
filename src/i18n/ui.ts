@@ -94,6 +94,7 @@ export interface UiText {
       excavation: GalleryPhoto;
       rebarPlumbing: GalleryPhoto;
       plaster: GalleryPhoto;
+      tileWork: GalleryPhoto;
       finished: GalleryPhoto;
     };
   };
@@ -262,6 +263,10 @@ export const ui: Record<Locale, UiText> = {
         plaster: {
           caption: "Plaster Finish",
           alt: "Freshly plastered pool shell with steps, ready for water",
+        },
+        tileWork: {
+          caption: "Tile Work",
+          alt: "Waterline tile being installed around the pool and spa",
         },
         finished: {
           caption: "Finished Pool & Spa",
@@ -443,6 +448,10 @@ export const ui: Record<Locale, UiText> = {
         plaster: {
           caption: "Acabado de Plaster",
           alt: "Cascarón de alberca recién aplanado con escalones, listo para el agua",
+        },
+        tileWork: {
+          caption: "Colocación de Azulejo",
+          alt: "Instalación del azulejo en la línea de agua de la alberca y el spa",
         },
         finished: {
           caption: "Alberca y Spa Terminados",

@@ -1,4 +1,9 @@
-export type ProjectStageKey = "excavation" | "rebarPlumbing" | "plaster" | "finished";
+export type ProjectStageKey =
+  | "excavation"
+  | "rebarPlumbing"
+  | "plaster"
+  | "tileWork"
+  | "finished";
 
 export interface ProjectPhoto {
   src: string;
@@ -20,6 +25,27 @@ export const projects: Project[] = [
       { src: "/images/projects/project-1-rebar-plumbing.jpg", stageKey: "rebarPlumbing" },
       { src: "/images/projects/project-1-plaster.jpg", stageKey: "plaster" },
       { src: "/images/projects/project-1-finished.jpg", stageKey: "finished" },
+    ],
+  },
+  {
+    id: "project-2",
+    photos: [
+      { src: "/images/projects/project-2-excavation.jpg", stageKey: "excavation" },
+      { src: "/images/projects/project-2-rebar-plumbing.jpg", stageKey: "rebarPlumbing" },
+      { src: "/images/projects/project-2-plaster.jpg", stageKey: "plaster" },
+      { src: "/images/projects/project-2-tile-detail.jpg", stageKey: "tileWork" },
+      { src: "/images/projects/project-2-tile-wide.jpg", stageKey: "tileWork" },
+      { src: "/images/projects/project-2-finished.jpg", stageKey: "finished" },
+    ],
+  },
+  {
+    id: "project-3",
+    photos: [
+      { src: "/images/projects/project-3-rebar-plumbing.jpg", stageKey: "rebarPlumbing" },
+      { src: "/images/projects/project-3-plaster-spray.jpg", stageKey: "plaster" },
+      { src: "/images/projects/project-3-tile.jpg", stageKey: "tileWork" },
+      { src: "/images/projects/project-3-plaster-finish.jpg", stageKey: "plaster" },
+      { src: "/images/projects/project-3-finished.jpg", stageKey: "finished" },
     ],
   },
 ];
