@@ -1,27 +1,30 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import "leaflet/dist/leaflet.css";
 import { serviceAreaCities } from "@/data/serviceAreas";
 
-// Approximate relative positions of each city within the Rio Grande Valley,
-// projected from real lat/long onto a 720x280 viewBox (not surveyed —
-// close enough for a visual coverage map, not for navigation).
-const cityCoordinates: Record<string, { x: number; y: number }> = {
-  Brownsville: { x: 489, y: 220 },
-  Harlingen: { x: 386, y: 104 },
-  "San Benito": { x: 420, y: 128 },
-  Weslaco: { x: 234, y: 117 },
-  Mercedes: { x: 273, y: 121 },
-  McAllen: { x: 109, y: 99 },
-  Edinburg: { x: 144, y: 60 },
-  Mission: { x: 60, y: 94 },
-  Pharr: { x: 134, y: 103 },
-  "South Padre Island": { x: 660, y: 136 },
-  Combes: { x: 365, y: 80 },
-  "Rio Hondo": { x: 446, y: 86 },
-  "Los Fresnos": { x: 500, y: 154 },
-  Bayview: { x: 546, y: 123 },
-  "Laguna Vista": { x: 592, y: 141 },
-  "Port Isabel": { x: 639, y: 151 },
-  "Arroyo City": { x: 520, y: 61 },
-  "Rancho Viejo": { x: 464, y: 173 },
+// Real coordinates for each city, used to plot an actual map instead of a
+// stylized/abstract layout.
+const cityCoordinates: Record<string, [number, number]> = {
+  Brownsville: [25.9017, -97.4975],
+  Harlingen: [26.1906, -97.6961],
+  "San Benito": [26.1329, -97.6314],
+  Weslaco: [26.1595, -97.9909],
+  Mercedes: [26.1501, -97.9147],
+  McAllen: [26.2034, -98.23],
+  Edinburg: [26.3017, -98.1633],
+  Mission: [26.2159, -98.3253],
+  Pharr: [26.1948, -98.1836],
+  "South Padre Island": [26.1118, -97.1686],
+  Combes: [26.2523, -97.7381],
+  "Rio Hondo": [26.2379, -97.5817],
+  "Los Fresnos": [26.0668, -97.4778],
+  Bayview: [26.1454, -97.3892],
+  "Laguna Vista": [26.1004, -97.2989],
+  "Port Isabel": [26.0734, -97.2086],
+  "Arroyo City": [26.2988, -97.4386],
+  "Rancho Viejo": [26.0187, -97.5461],
 };
 
 export function ServiceAreaHeatMap({
@@ -31,55 +34,84 @@ export function ServiceAreaHeatMap({
   ariaLabel: string;
   unconfirmedTooltip: string;
 }) {
-  const points = serviceAreaCities
-    .map((city) => ({ ...city, coord: cityCoordinates[city.name] }))
-    .filter((city) => city.coord);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<import("leaflet").Map | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function init() {
+      const L = (await import("leaflet")).default;
+      if (cancelled || !containerRef.current || mapRef.current) return;
+
+      const map = L.map(containerRef.current, {
+        scrollWheelZoom: false,
+        attributionControl: true,
+        maxZoom: 16,
+      });
+      mapRef.current = map;
+
+      // Esri's dark-canvas basemap — free to use, no API key required.
+      L.tileLayer(
+        "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+        {
+          attribution: "Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ",
+          maxZoom: 16,
+        },
+      ).addTo(map);
+
+      L.tileLayer(
+        "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}",
+        { maxZoom: 16 },
+      ).addTo(map);
+
+      const points: [number, number][] = [];
+
+      for (const city of serviceAreaCities) {
+        const coord = cityCoordinates[city.name];
+        if (!coord) continue;
+        points.push(coord);
+
+        L.circle(coord, {
+          radius: city.confirmed ? 9000 : 6000,
+          color: city.confirmed ? "#f0a63b" : "#33c3de",
+          weight: 1,
+          opacity: city.confirmed ? 0.6 : 0.35,
+          fillColor: city.confirmed ? "#f0a63b" : "#33c3de",
+          fillOpacity: city.confirmed ? 0.3 : 0.16,
+        }).addTo(map);
+
+        L.circleMarker(coord, {
+          radius: 4,
+          color: "#061826",
+          weight: 1,
+          fillColor: city.confirmed ? "#f0a63b" : "#33c3de",
+          fillOpacity: 1,
+        })
+          .bindTooltip(city.confirmed ? city.name : `${city.name} — ${unconfirmedTooltip}`)
+          .addTo(map);
+      }
+
+      if (points.length > 0) {
+        map.fitBounds(L.latLngBounds(points), { padding: [28, 28] });
+      }
+    }
+
+    init();
+
+    return () => {
+      cancelled = true;
+      mapRef.current?.remove();
+      mapRef.current = null;
+    };
+  }, [unconfirmedTooltip]);
 
   return (
-    <svg
-      viewBox="0 0 720 280"
+    <div
+      ref={containerRef}
       role="img"
       aria-label={ariaLabel}
-      className="h-64 w-full max-w-3xl rounded-3xl border border-white/10 bg-navy-950/60 sm:h-72"
-    >
-      <defs>
-        <radialGradient id="heat-confirmed" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#f0a63b" stopOpacity="0.85" />
-          <stop offset="45%" stopColor="#0eaec9" stopOpacity="0.45" />
-          <stop offset="100%" stopColor="#0eaec9" stopOpacity="0" />
-        </radialGradient>
-        <radialGradient id="heat-unconfirmed" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#33c3de" stopOpacity="0.35" />
-          <stop offset="100%" stopColor="#33c3de" stopOpacity="0" />
-        </radialGradient>
-      </defs>
-
-      <g style={{ mixBlendMode: "screen" }}>
-        {points.map((city) => (
-          <circle
-            key={`glow-${city.name}`}
-            cx={city.coord.x}
-            cy={city.coord.y}
-            r={city.confirmed ? 78 : 52}
-            fill={city.confirmed ? "url(#heat-confirmed)" : "url(#heat-unconfirmed)"}
-          />
-        ))}
-      </g>
-
-      {points.map((city) => (
-        <circle
-          key={`marker-${city.name}`}
-          cx={city.coord.x}
-          cy={city.coord.y}
-          r={4}
-          fill={city.confirmed ? "#f0a63b" : "#33c3de"}
-          stroke="#061826"
-          strokeWidth={1}
-          opacity={city.confirmed ? 1 : 0.7}
-        >
-          <title>{city.confirmed ? city.name : `${city.name} — ${unconfirmedTooltip}`}</title>
-        </circle>
-      ))}
-    </svg>
+      className="h-64 w-full max-w-3xl overflow-hidden rounded-3xl border border-white/10 bg-navy-950 sm:h-96"
+    />
   );
 }

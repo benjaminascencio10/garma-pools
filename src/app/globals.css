@@ -55,3 +55,41 @@ html {
 section[id] {
   scroll-margin-top: 5rem;
 }
+
+/* Theme the Leaflet service-area map to match the dark navy design system. */
+.leaflet-container {
+  background: var(--color-navy-950);
+  font-family: var(--font-sans);
+}
+
+.leaflet-control-attribution {
+  background: rgba(6, 24, 38, 0.75) !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.leaflet-control-attribution a {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.leaflet-control-zoom a {
+  background: rgba(10, 36, 56, 0.9) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background: var(--color-pool-600) !important;
+}
+
+.leaflet-tooltip {
+  background: var(--color-navy-900);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-weight: 700;
+  font-size: 0.75rem;
+  box-shadow: none;
+}
+
+.leaflet-tooltip-top:before {
+  border-top-color: var(--color-navy-900);
+}
