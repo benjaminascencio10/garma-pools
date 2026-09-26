@@ -58,4 +58,13 @@ export const projects: Project[] = [
       { src: "/images/projects/project-4-finished.jpg", stageKey: "finished" },
     ],
   },
+  {
+    id: "project-5",
+    photos: [
+      { src: "/images/projects/project-5-excavation.jpg", stageKey: "excavation" },
+      { src: "/images/projects/project-5-rebar-plumbing.jpg", stageKey: "rebarPlumbing" },
+      { src: "/images/projects/project-5-plaster.jpg", stageKey: "plaster" },
+      { src: "/images/projects/project-5-finished.jpg", stageKey: "finished" },
+    ],
+  },
 ];
