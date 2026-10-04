@@ -47,6 +47,7 @@ export interface UiText {
     sendingLabel: string;
     requiredError: string;
     emailError: string;
+    submitErrorMessage: string;
     thankYouTitle: string;
     thankYouBody: string;
     callButtonLabel: string;
@@ -193,6 +194,8 @@ export const ui: Record<Locale, UiText> = {
       sendingLabel: "Sending...",
       requiredError: "Required",
       emailError: "Enter a valid email",
+      submitErrorMessage:
+        "Something went wrong sending your request. Please call us directly or try again.",
       thankYouTitle: "Thank You!",
       thankYouBody:
         "Your request has been received. A Garma Pools representative will contact you to discuss your project.",
@@ -378,6 +381,8 @@ export const ui: Record<Locale, UiText> = {
       sendingLabel: "Enviando...",
       requiredError: "Requerido",
       emailError: "Ingresa un correo válido",
+      submitErrorMessage:
+        "Algo salió mal al enviar tu solicitud. Por favor llámanos directamente o intenta de nuevo.",
       thankYouTitle: "¡Gracias!",
       thankYouBody:
         "Tu solicitud fue recibida. Un representante de Garma Pools se pondrá en contacto contigo para hablar sobre tu proyecto.",

@@ -37,6 +37,7 @@ export function QuoteWizard({ locale }: { locale: Locale }) {
   const [contact, setContact] = useState<QuoteContactInfo>(emptyContact);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
   const fields = service ? fieldsByService[service] : [];
 
@@ -79,6 +80,7 @@ export function QuoteWizard({ locale }: { locale: Locale }) {
   async function handleSubmit() {
     if (!service || !validateStep3()) return;
     setSubmitting(true);
+    setSubmitError(false);
     try {
       await submitQuoteRequest({
         service,
@@ -87,6 +89,8 @@ export function QuoteWizard({ locale }: { locale: Locale }) {
         submittedAt: new Date().toISOString(),
       });
       setStep(4);
+    } catch {
+      setSubmitError(true);
     } finally {
       setSubmitting(false);
     }
@@ -249,6 +253,10 @@ export function QuoteWizard({ locale }: { locale: Locale }) {
                   required
                 />
               </div>
+
+              {submitError && (
+                <p className="text-sm font-semibold text-red-600">{t.submitErrorMessage}</p>
+              )}
 
               <button
                 type="button"

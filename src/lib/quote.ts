@@ -16,19 +16,21 @@ export interface QuoteSubmission {
 }
 
 /**
- * There is no backend integration yet. This function is the single place
- * to wire up the quote pipeline later: CRM, WhatsApp, email, Google Sheets,
- * or a payment step. For now it only resolves locally so the wizard can
- * show a confirmation step.
- *
- * TODO: replace this with a real call, e.g.:
- *   await fetch("/api/quote", { method: "POST", body: JSON.stringify(submission) })
+ * Sends the quote request to /api/quote, which emails it to the right
+ * person at Garma Pools based on the selected service.
  */
 export async function submitQuoteRequest(
   submission: QuoteSubmission,
 ): Promise<{ ok: true }> {
-  if (process.env.NODE_ENV !== "production") {
-    console.info("[Garma Pools] Quote request captured (no backend yet):", submission);
+  const response = await fetch("/api/quote", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(submission),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to submit quote request");
   }
+
   return { ok: true };
 }
