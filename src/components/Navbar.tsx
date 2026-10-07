@@ -27,18 +27,17 @@ export function Navbar({ locale }: { locale: Locale }) {
       </div>
 
       <Container className="flex h-24 items-center justify-between gap-4">
-        <a href="#top" className="flex items-center gap-3">
-          <Image
-            src="/images/logo.jpg"
-            alt={company.name}
-            width={56}
-            height={56}
-            className="h-14 w-14 rounded-xl"
-            priority
-          />
-          <span className="hidden text-lg font-extrabold tracking-tight whitespace-nowrap text-white sm:block">
-            {company.name.toUpperCase()}
-          </span>
+        <a href="#top" className="flex items-center">
+          <div className="relative h-20 w-20 overflow-hidden rounded-2xl bg-white p-2 shadow-sm">
+            <Image
+              src="/images/logo-full.png"
+              alt={company.name}
+              fill
+              sizes="80px"
+              className="object-contain p-1"
+              priority
+            />
+          </div>
         </a>
 
         <nav className="hidden items-center gap-5 lg:flex">

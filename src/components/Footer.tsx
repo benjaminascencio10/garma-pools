@@ -1,19 +1,10 @@
 import Image from "next/image";
 import { Phone } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { FacebookIcon, InstagramIcon, TikTokIcon } from "@/components/ui/SocialIcons";
+import { FacebookIcon } from "@/components/ui/SocialIcons";
 import { company, companyText } from "@/data/company";
 import { ui } from "@/i18n/ui";
 import type { Locale } from "@/i18n/locale";
-
-// Social links are placeholders — no real Garma Pools profile URLs are
-// known yet. Fill in `company.social` once confirmed and these will
-// automatically link out instead of rendering as disabled icons.
-const socialIconComponents = [
-  { label: "Facebook", icon: FacebookIcon, href: company.social.facebook },
-  { label: "Instagram", icon: InstagramIcon, href: company.social.instagram },
-  { label: "TikTok", icon: TikTokIcon, href: company.social.tiktok },
-];
 
 export function Footer({ locale }: { locale: Locale }) {
   const t = ui[locale].footer;
@@ -59,26 +50,15 @@ export function Footer({ locale }: { locale: Locale }) {
           </nav>
 
           <div className="flex gap-3">
-            {socialIconComponents.map(({ label, icon: Icon, href }) =>
-              href ? (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 hover:border-white/40"
-                >
-                  <Icon className="h-4 w-4" aria-hidden />
-                </a>
-              ) : (
-                <span
-                  key={label}
-                  aria-label={`${label} (${t.socialUnavailable})`}
-                  className="flex h-10 w-10 cursor-not-allowed items-center justify-center rounded-full border border-white/10 text-white/30"
-                >
-                  <Icon className="h-4 w-4" aria-hidden />
-                </span>
-              ),
-            )}
+            <a
+              href={company.social.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 hover:border-white/40"
+            >
+              <FacebookIcon className="h-4 w-4" aria-hidden />
+            </a>
           </div>
         </div>
 

@@ -132,7 +132,6 @@ export interface UiText {
   };
   footer: {
     links: { label: string; href: string }[];
-    socialUnavailable: string; // suffix for aria-label
     rightsReserved: string;
   };
   stickyCta: {
@@ -309,7 +308,6 @@ export const ui: Record<Locale, UiText> = {
         { label: "Get a Quote", href: "#quote" },
         { label: "Contact", href: "#contact" },
       ],
-      socialUnavailable: "link not yet available",
       rightsReserved: "All rights reserved.",
     },
     stickyCta: {
@@ -484,7 +482,6 @@ export const ui: Record<Locale, UiText> = {
         { label: "Cotizar", href: "#quote" },
         { label: "Contacto", href: "#contact" },
       ],
-      socialUnavailable: "enlace no disponible aún",
       rightsReserved: "Todos los derechos reservados.",
     },
     stickyCta: {

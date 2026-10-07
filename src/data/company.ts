@@ -8,10 +8,7 @@ export const company = {
   phoneHref: "tel:+19562543142",
 
   social: {
-    // TODO: add real profile URLs once confirmed. Left empty on purpose.
-    facebook: "",
-    instagram: "",
-    tiktok: "",
+    facebook: "https://www.facebook.com/garmapools",
   },
 } as const;
 
