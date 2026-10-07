@@ -4,13 +4,6 @@ import { constructionCategories } from "@/data/construction";
 import { ui } from "@/i18n/ui";
 import type { Locale } from "@/i18n/locale";
 
-const galleryPhotos = [
-  { key: "excavation", src: "/images/construction-excavation.jpg" },
-  { key: "rebarPlumbing", src: "/images/construction-rebar-plumbing.jpg" },
-  { key: "plaster", src: "/images/construction-plaster.jpg" },
-  { key: "interiorFinish", src: "/images/construction-interior-finish.jpg" },
-] as const;
-
 export function ConstructionSection({ locale }: { locale: Locale }) {
   const t = ui[locale].construction;
 
@@ -58,29 +51,6 @@ export function ConstructionSection({ locale }: { locale: Locale }) {
               sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-cover"
             />
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-5">
-          <h3 className="text-lg font-extrabold text-white/90">{t.galleryTitle}</h3>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {galleryPhotos.map((photo) => {
-              const info = t.gallery[photo.key];
-              return (
-                <div key={photo.key} className="flex flex-col gap-2">
-                  <div className="relative h-40 w-full overflow-hidden rounded-xl">
-                    <Image
-                      src={photo.src}
-                      alt={info.alt}
-                      fill
-                      sizes="(min-width: 1024px) 25vw, 50vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  <span className="text-xs font-semibold text-white/70">{info.caption}</span>
-                </div>
-              );
-            })}
           </div>
         </div>
       </Container>

@@ -78,13 +78,10 @@ export interface UiText {
     unconfirmedBadge: string;
     ctaLabel: string;
     showcaseAlt: string;
-    galleryTitle: string;
-    gallery: {
-      excavation: GalleryPhoto;
-      rebarPlumbing: GalleryPhoto;
-      plaster: GalleryPhoto;
-      interiorFinish: GalleryPhoto;
-    };
+  };
+  brands: {
+    title: string;
+    logoAltSuffix: string; // `${brand.name} ${logoAltSuffix}`
   };
   projects: {
     eyebrow: string;
@@ -232,25 +229,10 @@ export const ui: Record<Locale, UiText> = {
       unconfirmedBadge: "Not yet confirmed with Garma Pools",
       ctaLabel: "Start Your Pool Project",
       showcaseAlt: "Completed pool shell with travertine decking, ready to fill",
-      galleryTitle: "From the ground up",
-      gallery: {
-        excavation: {
-          caption: "Excavation",
-          alt: "Pool excavation and layout at the start of a Garma Pools build",
-        },
-        rebarPlumbing: {
-          caption: "Steel & Plumbing",
-          alt: "Rebar structure and plumbing installed before the concrete pour",
-        },
-        plaster: {
-          caption: "Plaster Finish",
-          alt: "Garma Pools crew applying the plaster finish to a pool shell",
-        },
-        interiorFinish: {
-          caption: "Finished Pool & Spa",
-          alt: "Completed Garma Pools backyard pool and spa, full and ready to enjoy",
-        },
-      },
+    },
+    brands: {
+      title: "Brands We Trust",
+      logoAltSuffix: "logo",
     },
     projects: {
       eyebrow: "Our Work",
@@ -422,25 +404,10 @@ export const ui: Record<Locale, UiText> = {
       unconfirmedBadge: "Aún no confirmado con Garma Pools",
       ctaLabel: "Inicia Tu Proyecto de Alberca",
       showcaseAlt: "Alberca terminada con deck de travertino, lista para llenarse",
-      galleryTitle: "Desde cero hasta el resultado final",
-      gallery: {
-        excavation: {
-          caption: "Excavación",
-          alt: "Excavación y trazo de una alberca al inicio de un proyecto de Garma Pools",
-        },
-        rebarPlumbing: {
-          caption: "Acero y Plomería",
-          alt: "Estructura de varilla y plomería instalada antes de colar el concreto",
-        },
-        plaster: {
-          caption: "Acabado de Plaster",
-          alt: "Equipo de Garma Pools aplicando el acabado de plaster en una alberca",
-        },
-        interiorFinish: {
-          caption: "Alberca y Spa Terminados",
-          alt: "Alberca y spa de patio trasero de Garma Pools terminados, llenos y listos para disfrutar",
-        },
-      },
+    },
+    brands: {
+      title: "Marcas de Confianza",
+      logoAltSuffix: "logo",
     },
     projects: {
       eyebrow: "Nuestro Trabajo",
