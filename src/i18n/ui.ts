@@ -57,15 +57,6 @@ export interface UiText {
     eyebrow: string;
     title: string;
     description: string;
-    calculatorTitle: string;
-    poolSizeLabel: string;
-    frequencyLabel: string;
-    estimatedQuoteLabel: string;
-    perMonthSuffix: string;
-    customQuoteLabel: string;
-    helperWithPrice: string;
-    helperWithoutPrice: string;
-    ctaLabel: string;
   };
   howItWorks: {
     eyebrow: string;
@@ -206,16 +197,6 @@ export const ui: Record<Locale, UiText> = {
       eyebrow: "Quick Quote",
       title: "Find the Right Service for Your Pool",
       description: "Not sure where to start? Pick what fits your pool best.",
-      calculatorTitle: "Maintenance estimate calculator",
-      poolSizeLabel: "Pool size",
-      frequencyLabel: "Frequency",
-      estimatedQuoteLabel: "Estimated quote",
-      perMonthSuffix: "/mo",
-      customQuoteLabel: "Request a Custom Quote",
-      helperWithPrice: "Estimated price — final quote confirmed by Garma Pools.",
-      helperWithoutPrice:
-        "Pricing for this option isn't published yet. Request a quote and we'll follow up.",
-      ctaLabel: "Get My Quote",
     },
     howItWorks: {
       eyebrow: "Simple Process",
@@ -380,16 +361,6 @@ export const ui: Record<Locale, UiText> = {
       eyebrow: "Cotización Rápida",
       title: "Encuentra el Servicio Adecuado para Tu Alberca",
       description: "¿No sabes por dónde empezar? Elige lo que mejor se ajuste a tu alberca.",
-      calculatorTitle: "Calculadora de estimado de mantenimiento",
-      poolSizeLabel: "Tamaño de la alberca",
-      frequencyLabel: "Frecuencia",
-      estimatedQuoteLabel: "Cotización estimada",
-      perMonthSuffix: "/mes",
-      customQuoteLabel: "Solicitar Cotización Personalizada",
-      helperWithPrice: "Precio estimado — cotización final confirmada por Garma Pools.",
-      helperWithoutPrice:
-        "El precio de esta opción aún no está publicado. Solicita una cotización y te contactaremos.",
-      ctaLabel: "Obtener Mi Cotización",
     },
     howItWorks: {
       eyebrow: "Proceso Simple",
