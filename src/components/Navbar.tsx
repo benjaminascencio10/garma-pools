@@ -13,7 +13,19 @@ export function Navbar({ locale }: { locale: Locale }) {
   const t = ui[locale];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-navy-900/95 backdrop-blur supports-[backdrop-filter]:bg-navy-900/80">
+    <header className="sticky top-0 z-50 overflow-hidden border-b border-white/10">
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/images/navbar-water-bg.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-900/70 to-navy-950/90" />
+      </div>
+
       <Container className="flex h-16 items-center justify-between gap-4">
         <a href="#top" className="flex items-center gap-2">
           <Image
