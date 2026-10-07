@@ -53,7 +53,7 @@ html {
 
 /* Offset anchor scroll targets so the sticky header doesn't cover them. */
 section[id] {
-  scroll-margin-top: 5rem;
+  scroll-margin-top: 7rem;
 }
 
 /* Theme the Leaflet service-area map to match the dark navy design system. */

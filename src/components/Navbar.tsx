@@ -26,17 +26,17 @@ export function Navbar({ locale }: { locale: Locale }) {
         <div className="absolute inset-0 bg-gradient-to-r from-navy-950/85 via-navy-900/45 to-navy-950/85" />
       </div>
 
-      <Container className="flex h-16 items-center justify-between gap-4">
-        <a href="#top" className="flex items-center gap-2">
+      <Container className="flex h-24 items-center justify-between gap-4">
+        <a href="#top" className="flex items-center gap-3">
           <Image
             src="/images/logo.jpg"
             alt={company.name}
-            width={44}
-            height={44}
-            className="h-11 w-11 rounded-xl"
+            width={56}
+            height={56}
+            className="h-14 w-14 rounded-xl"
             priority
           />
-          <span className="hidden text-lg font-extrabold tracking-tight text-white sm:block">
+          <span className="hidden text-xl font-extrabold tracking-tight text-white sm:block">
             {company.name.toUpperCase()}
           </span>
         </a>
