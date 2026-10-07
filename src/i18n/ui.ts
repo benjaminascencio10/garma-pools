@@ -91,6 +91,8 @@ export interface UiText {
     title: string;
     description: string;
     projectLabel: string; // combined with a number, e.g. "Project 1"
+    completedProjectsTitle: string;
+    completedProjectAlt: string; // alt text for each completed-project thumbnail
     stages: {
       excavation: GalleryPhoto;
       rebarPlumbing: GalleryPhoto;
@@ -256,6 +258,8 @@ export const ui: Record<Locale, UiText> = {
       description:
         "Follow one of our builds through every stage — from the first dig to the final fill.",
       projectLabel: "Project",
+      completedProjectsTitle: "More Completed Projects",
+      completedProjectAlt: "Finished Garma Pools backyard pool and spa",
       stages: {
         excavation: {
           caption: "Excavation",
@@ -444,6 +448,8 @@ export const ui: Record<Locale, UiText> = {
       description:
         "Sigue una de nuestras construcciones en cada etapa — desde la primera excavación hasta el llenado final.",
       projectLabel: "Proyecto",
+      completedProjectsTitle: "Más Proyectos Terminados",
+      completedProjectAlt: "Alberca y spa de patio trasero de Garma Pools terminados",
       stages: {
         excavation: {
           caption: "Excavación",
