@@ -23,7 +23,7 @@ export function Navbar({ locale }: { locale: Locale }) {
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-900/70 to-navy-950/90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/85 via-navy-900/45 to-navy-950/85" />
       </div>
 
       <Container className="flex h-16 items-center justify-between gap-4">
