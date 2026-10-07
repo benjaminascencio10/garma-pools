@@ -28,13 +28,13 @@ export function Navbar({ locale }: { locale: Locale }) {
 
       <Container className="flex h-24 items-center justify-between gap-4">
         <a href="#top" className="flex items-center">
-          <div className="relative h-20 w-20 overflow-hidden rounded-2xl bg-white p-2 shadow-sm">
+          <div className="relative h-20 w-20">
             <Image
               src="/images/logo-full.png"
               alt={company.name}
               fill
               sizes="80px"
-              className="object-contain p-1"
+              className="object-contain drop-shadow-[0_2px_6px_rgba(0,0,0,0.45)]"
               priority
             />
           </div>
