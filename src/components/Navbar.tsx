@@ -36,17 +36,17 @@ export function Navbar({ locale }: { locale: Locale }) {
             className="h-14 w-14 rounded-xl"
             priority
           />
-          <span className="hidden text-xl font-extrabold tracking-tight text-white sm:block">
+          <span className="hidden text-lg font-extrabold tracking-tight whitespace-nowrap text-white sm:block">
             {company.name.toUpperCase()}
           </span>
         </a>
 
-        <nav className="hidden items-center gap-6 lg:flex">
+        <nav className="hidden items-center gap-5 lg:flex">
           {t.nav.links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-semibold text-white/80 transition hover:text-white"
+              className="text-sm font-semibold whitespace-nowrap text-white/80 transition hover:text-white"
             >
               {link.label}
             </a>
@@ -56,14 +56,14 @@ export function Navbar({ locale }: { locale: Locale }) {
         <div className="hidden items-center gap-3 lg:flex">
           <a
             href={company.phoneHref}
-            className="flex items-center gap-2 text-sm font-bold text-white hover:text-pool-100"
+            className="flex items-center gap-2 text-sm font-bold whitespace-nowrap text-white hover:text-pool-100"
           >
             <Phone className="h-4 w-4" aria-hidden />
             {company.phone}
           </a>
           <a
             href="#quote"
-            className="rounded-full bg-pool-500 px-5 py-2.5 text-sm font-bold text-navy-950 shadow-sm transition hover:bg-pool-400"
+            className="rounded-full bg-pool-500 px-5 py-2.5 text-sm font-bold whitespace-nowrap text-navy-950 shadow-sm transition hover:bg-pool-400"
           >
             {t.nav.getQuote}
           </a>

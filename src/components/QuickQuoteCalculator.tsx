@@ -28,7 +28,7 @@ export function QuickQuoteCalculator({ locale }: { locale: Locale }) {
       <Container className="flex flex-col gap-12">
         <SectionHeading eyebrow={t.eyebrow} title={t.title} description={t.description} />
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {quickQuoteCards[locale].map((card) => (
             <a
               key={card.id}
