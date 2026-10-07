@@ -9,6 +9,7 @@ import type { Locale } from "@/i18n/locale";
 export function ServiceArea({ locale }: { locale: Locale }) {
   const t = ui[locale].serviceArea;
   const text = companyText[locale];
+  const hasUnconfirmed = serviceAreaCities.some((city) => !city.confirmed);
 
   return (
     <section id="service-area" className="bg-navy-900 py-20 text-white sm:py-24">
@@ -21,16 +22,18 @@ export function ServiceArea({ locale }: { locale: Locale }) {
 
         <ServiceAreaHeatMap ariaLabel={t.mapAriaLabel} unconfirmedTooltip={t.unconfirmedTooltip} />
 
-        <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-white/70">
-          <span className="flex items-center gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-full bg-sand-500" aria-hidden />
-            {t.legendConfirmed}
-          </span>
-          <span className="flex items-center gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-full bg-pool-400/70" aria-hidden />
-            {t.legendUnconfirmed}
-          </span>
-        </div>
+        {hasUnconfirmed && (
+          <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-white/70">
+            <span className="flex items-center gap-1.5">
+              <span className="h-2.5 w-2.5 rounded-full bg-sand-500" aria-hidden />
+              {t.legendConfirmed}
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="h-2.5 w-2.5 rounded-full bg-pool-400/70" aria-hidden />
+              {t.legendUnconfirmed}
+            </span>
+          </div>
+        )}
 
         <div className="flex flex-wrap justify-center gap-3">
           {serviceAreaCities.map((city) => (
@@ -44,7 +47,9 @@ export function ServiceArea({ locale }: { locale: Locale }) {
           ))}
         </div>
 
-        <p className="max-w-lg text-sm text-white/60">{t.unconfirmedFootnote}</p>
+        {hasUnconfirmed && (
+          <p className="max-w-lg text-sm text-white/60">{t.unconfirmedFootnote}</p>
+        )}
       </Container>
     </section>
   );

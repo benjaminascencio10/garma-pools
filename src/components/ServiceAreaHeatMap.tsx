@@ -9,21 +9,14 @@ import { serviceAreaCities } from "@/data/serviceAreas";
 const cityCoordinates: Record<string, [number, number]> = {
   Brownsville: [25.9017, -97.4975],
   Harlingen: [26.1906, -97.6961],
-  "San Benito": [26.1329, -97.6314],
-  Weslaco: [26.1595, -97.9909],
   Mercedes: [26.1501, -97.9147],
   McAllen: [26.2034, -98.23],
-  Edinburg: [26.3017, -98.1633],
-  Mission: [26.2159, -98.3253],
-  Pharr: [26.1948, -98.1836],
   "South Padre Island": [26.1118, -97.1686],
   Combes: [26.2523, -97.7381],
-  "Rio Hondo": [26.2379, -97.5817],
   "Los Fresnos": [26.0668, -97.4778],
   Bayview: [26.1454, -97.3892],
   "Laguna Vista": [26.1004, -97.2989],
   "Port Isabel": [26.0734, -97.2086],
-  "Arroyo City": [26.2988, -97.4386],
   "Rancho Viejo": [26.0187, -97.5461],
 };
 
