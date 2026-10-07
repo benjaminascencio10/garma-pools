@@ -8,7 +8,7 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { ConstructionSection } from "@/components/ConstructionSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { MaintenanceSection } from "@/components/MaintenanceSection";
-import { ProductsSection } from "@/components/ProductsSection";
+import { FinancingSection } from "@/components/FinancingSection";
 import { ServiceArea } from "@/components/ServiceArea";
 import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
@@ -78,7 +78,7 @@ export default function HomeEs() {
         <ConstructionSection locale="es" />
         <ProjectsSection locale="es" />
         <MaintenanceSection locale="es" />
-        <ProductsSection locale="es" />
+        <FinancingSection locale="es" />
         <ServiceArea locale="es" />
         <CTASection locale="es" />
       </main>

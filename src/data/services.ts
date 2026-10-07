@@ -1,8 +1,8 @@
 import type { LucideIcon } from "lucide-react";
-import { Hammer, Droplets, ShoppingBag } from "lucide-react";
+import { Hammer, Droplets } from "lucide-react";
 import type { Locale } from "@/i18n/locale";
 
-export type ServiceKey = "construction" | "maintenance" | "products";
+export type ServiceKey = "construction" | "maintenance";
 
 export interface MainService {
   key: ServiceKey;
@@ -34,15 +34,6 @@ export const mainServices: Record<Locale, MainService[]> = {
       ctaLabel: "Get Maintenance Quote",
       href: "#quote",
     },
-    {
-      key: "products",
-      icon: ShoppingBag,
-      title: "Pool Products",
-      description:
-        "Products and chemicals to help you care for and maintain your pool between service visits.",
-      ctaLabel: "Shop Pool Products",
-      href: "#products",
-    },
   ],
   es: [
     {
@@ -62,15 +53,6 @@ export const mainServices: Record<Locale, MainService[]> = {
         "Servicio regular para mantener tu agua limpia, balanceada y tu alberca en buenas condiciones.",
       ctaLabel: "Cotizar Mantenimiento",
       href: "#quote",
-    },
-    {
-      key: "products",
-      icon: ShoppingBag,
-      title: "Productos para Alberca",
-      description:
-        "Productos y químicos para ayudarte a cuidar y mantener tu alberca entre visitas de servicio.",
-      ctaLabel: "Ver Productos",
-      href: "#products",
     },
   ],
 };

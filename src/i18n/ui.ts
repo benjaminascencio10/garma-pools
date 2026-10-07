@@ -106,13 +106,15 @@ export interface UiText {
     description: string;
     ctaLabel: string;
   };
-  products: {
+  financing: {
     eyebrow: string;
     title: string;
     description: string;
-    priceUnavailable: string;
-    contactCta: string;
-    photoPlaceholderSuffix: string; // `${category} ${photoPlaceholderSuffix}`
+    applyLabel: string;
+    options: {
+      lyon: string;
+      hfs: string;
+    };
   };
   serviceArea: {
     eyebrow: string;
@@ -148,7 +150,7 @@ export const ui: Record<Locale, UiText> = {
         { label: "Construction", href: "#construction" },
         { label: "Projects", href: "#projects" },
         { label: "Maintenance", href: "#maintenance" },
-        { label: "Products", href: "#products" },
+        { label: "Financing", href: "#financing" },
         { label: "How It Works", href: "#how-it-works" },
         { label: "Service Area", href: "#service-area" },
         { label: "Contact", href: "#contact" },
@@ -285,14 +287,16 @@ export const ui: Record<Locale, UiText> = {
         "Professional, consistent service so your pool stays clean, balanced, and ready whenever you want to use it.",
       ctaLabel: "Request Maintenance",
     },
-    products: {
-      eyebrow: "Pool Care Products",
-      title: "Pool Care Products",
+    financing: {
+      eyebrow: "Financing",
+      title: "Flexible Financing for Your Pool Project",
       description:
-        "A catalog is coming soon. Every product card below is a placeholder, ready to be replaced with real Garma Pools inventory.",
-      priceUnavailable: "Price not yet available",
-      contactCta: "Contact Us",
-      photoPlaceholderSuffix: "product photo",
+        "A new pool is a big investment — but it doesn't have to happen all at once. Garma Pools works with trusted lenders so you can spread the cost into monthly payments that fit your budget.",
+      applyLabel: "Apply Now",
+      options: {
+        lyon: "Specialized pool loans with competitive rates and flexible terms.",
+        hfs: "Fast approvals and payment plans built specifically for pool financing.",
+      },
     },
     serviceArea: {
       eyebrow: "Where We Work",
@@ -316,7 +320,6 @@ export const ui: Record<Locale, UiText> = {
         { label: "Home", href: "#top" },
         { label: "Pool Construction", href: "#construction" },
         { label: "Maintenance", href: "#maintenance" },
-        { label: "Products", href: "#products" },
         { label: "Get a Quote", href: "#quote" },
         { label: "Contact", href: "#contact" },
       ],
@@ -335,7 +338,7 @@ export const ui: Record<Locale, UiText> = {
         { label: "Construcción", href: "#construction" },
         { label: "Proyectos", href: "#projects" },
         { label: "Mantenimiento", href: "#maintenance" },
-        { label: "Productos", href: "#products" },
+        { label: "Financiamiento", href: "#financing" },
         { label: "Cómo Funciona", href: "#how-it-works" },
         { label: "Área de Servicio", href: "#service-area" },
         { label: "Contacto", href: "#contact" },
@@ -472,14 +475,16 @@ export const ui: Record<Locale, UiText> = {
         "Servicio profesional y constante para que tu alberca se mantenga limpia, balanceada y lista cuando quieras usarla.",
       ctaLabel: "Solicitar Mantenimiento",
     },
-    products: {
-      eyebrow: "Productos para Alberca",
-      title: "Productos para el Cuidado de tu Alberca",
+    financing: {
+      eyebrow: "Financiamiento",
+      title: "Financiamiento Flexible para tu Proyecto de Alberca",
       description:
-        "El catálogo estará disponible pronto. Cada tarjeta de producto de abajo es un marcador de posición, lista para reemplazarse con el inventario real de Garma Pools.",
-      priceUnavailable: "Precio no disponible aún",
-      contactCta: "Contáctanos",
-      photoPlaceholderSuffix: "foto del producto",
+        "Una alberca nueva es una inversión grande — pero no tiene que pagarse de una sola vez. Garma Pools trabaja con prestamistas de confianza para que puedas dividir el costo en pagos mensuales que se ajusten a tu presupuesto.",
+      applyLabel: "Aplicar Ahora",
+      options: {
+        lyon: "Préstamos especializados para albercas con tasas competitivas y plazos flexibles.",
+        hfs: "Aprobaciones rápidas y planes de pago diseñados específicamente para financiar albercas.",
+      },
     },
     serviceArea: {
       eyebrow: "Dónde Trabajamos",
@@ -503,7 +508,6 @@ export const ui: Record<Locale, UiText> = {
         { label: "Inicio", href: "#top" },
         { label: "Construcción de Albercas", href: "#construction" },
         { label: "Mantenimiento", href: "#maintenance" },
-        { label: "Productos", href: "#products" },
         { label: "Cotizar", href: "#quote" },
         { label: "Contacto", href: "#contact" },
       ],

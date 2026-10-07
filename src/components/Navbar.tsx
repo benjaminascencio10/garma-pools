@@ -21,7 +21,7 @@ export function Navbar({ locale }: { locale: Locale }) {
             alt={company.name}
             width={44}
             height={44}
-            className="h-11 w-11 rounded-full"
+            className="h-11 w-11 rounded-xl"
             priority
           />
           <span className="hidden text-lg font-extrabold tracking-tight text-white sm:block">

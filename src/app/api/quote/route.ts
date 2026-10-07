@@ -11,7 +11,6 @@ const ROUTING: Record<QuoteServiceId, string> = {
   "new-pool": CIRO_EMAIL,
   repair: CIRO_EMAIL,
   maintenance: MAIRA_EMAIL,
-  products: MAIRA_EMAIL,
   other: MAIRA_EMAIL,
 };
 
@@ -19,7 +18,6 @@ const SERVICE_LABELS: Record<QuoteServiceId, string> = {
   "new-pool": "Build a New Pool",
   maintenance: "Pool Maintenance & Cleaning",
   repair: "Pool Repair",
-  products: "Pool Products",
   other: "Other",
 };
 

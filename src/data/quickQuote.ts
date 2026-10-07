@@ -67,12 +67,6 @@ export const quickQuoteCards: Record<Locale, QuickQuoteCard[]> = {
       description: "Fix an issue or replace pool equipment.",
       href: "#quote",
     },
-    {
-      id: "pool-products",
-      title: "Pool Products",
-      description: "Chemicals and supplies for your pool.",
-      href: "#products",
-    },
   ],
   es: [
     {
@@ -98,12 +92,6 @@ export const quickQuoteCards: Record<Locale, QuickQuoteCard[]> = {
       title: "Reparación y Equipo",
       description: "Resuelve un problema o reemplaza el equipo de tu alberca.",
       href: "#quote",
-    },
-    {
-      id: "pool-products",
-      title: "Productos para Alberca",
-      description: "Químicos e insumos para tu alberca.",
-      href: "#products",
     },
   ],
 };

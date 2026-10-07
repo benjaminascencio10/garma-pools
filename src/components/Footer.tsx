@@ -30,7 +30,7 @@ export function Footer({ locale }: { locale: Locale }) {
                 alt={company.name}
                 width={56}
                 height={56}
-                className="h-14 w-14 rounded-full"
+                className="h-14 w-14 rounded-xl"
               />
               <div>
                 <p className="text-xl font-extrabold">{company.name.toUpperCase()}</p>

@@ -13,7 +13,7 @@ export function Services({ locale }: { locale: Locale }) {
       <Container className="flex flex-col gap-12">
         <SectionHeading eyebrow={t.eyebrow} title={t.title} description={t.description} />
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2">
           {mainServices[locale].map((service) => {
             const Icon = service.icon;
             return (

@@ -1,19 +1,8 @@
 import type { LucideIcon } from "lucide-react";
-import {
-  Wrench,
-  Droplets,
-  ShoppingBag,
-  HelpCircle,
-  Hammer,
-} from "lucide-react";
+import { Wrench, Droplets, HelpCircle, Hammer } from "lucide-react";
 import type { Locale } from "@/i18n/locale";
 
-export type QuoteServiceId =
-  | "new-pool"
-  | "maintenance"
-  | "repair"
-  | "products"
-  | "other";
+export type QuoteServiceId = "new-pool" | "maintenance" | "repair" | "other";
 
 export interface QuoteServiceOption {
   id: QuoteServiceId;
@@ -44,12 +33,6 @@ export const quoteServiceOptions: Record<Locale, QuoteServiceOption[]> = {
       description: "Equipment issues or pool repairs.",
     },
     {
-      id: "products",
-      icon: ShoppingBag,
-      label: "Pool Products",
-      description: "Chemicals and supplies for your pool.",
-    },
-    {
       id: "other",
       icon: HelpCircle,
       label: "Other",
@@ -74,12 +57,6 @@ export const quoteServiceOptions: Record<Locale, QuoteServiceOption[]> = {
       icon: Wrench,
       label: "Reparación de Alberca",
       description: "Problemas de equipo o reparaciones de la alberca.",
-    },
-    {
-      id: "products",
-      icon: ShoppingBag,
-      label: "Productos para Alberca",
-      description: "Químicos e insumos para tu alberca.",
     },
     {
       id: "other",
@@ -233,26 +210,6 @@ export const quoteFieldsByService: Record<Locale, Record<QuoteServiceId, QuoteFi
         placeholder: "78501",
       },
     ],
-    products: [
-      {
-        name: "productInterest",
-        label: "What products do you need?",
-        type: "select",
-        options: ["Chemicals", "Cleaning supplies", "Filters", "Equipment", "Accessories", "Not sure"],
-      },
-      {
-        name: "description",
-        label: "Anything else we should know?",
-        type: "textarea",
-      },
-      {
-        name: "zip",
-        label: "ZIP Code",
-        type: "text",
-        required: true,
-        placeholder: "78501",
-      },
-    ],
     other: [
       {
         name: "description",
@@ -390,26 +347,6 @@ export const quoteFieldsByService: Record<Locale, Record<QuoteServiceId, QuoteFi
         label: "Descripción",
         type: "textarea",
         placeholder: "Cuéntanos qué está pasando...",
-      },
-      {
-        name: "zip",
-        label: "Código Postal",
-        type: "text",
-        required: true,
-        placeholder: "78501",
-      },
-    ],
-    products: [
-      {
-        name: "productInterest",
-        label: "¿Qué productos necesitas?",
-        type: "select",
-        options: ["Químicos", "Insumos de limpieza", "Filtros", "Equipo", "Accesorios", "No estoy seguro"],
-      },
-      {
-        name: "description",
-        label: "¿Algo más que debamos saber?",
-        type: "textarea",
       },
       {
         name: "zip",
