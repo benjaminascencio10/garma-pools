@@ -276,13 +276,13 @@ export const ui: Record<Locale, UiText> = {
       heading: "GARMA POOLS",
       tagline: "Building Beautiful Pools, Creating Lasting Memories.",
       paragraph1:
-        "Established in 2020, Garma Pools specializes in Pool Construction, Pool Maintenance, and Pool Remodeling.",
+        "Established in 2017, Garma Pools specializes in Pool Construction, Pool Maintenance, and Pool Remodeling.",
       paragraph2:
         "We are committed to delivering quality craftsmanship, reliable service, and exceptional customer satisfaction. Whether building your dream pool, renovating an existing one, or keeping it in perfect condition, our team is dedicated to bringing your vision to life.",
       paragraph3:
         "At Garma Pools, we don't just build pools — we create spaces where lasting memories are made.",
       closingLine: "Your Vision. Our Expertise. Your Perfect Pool.",
-      footnote: "Proudly serving South Texas since 2022",
+      footnote: "Proudly serving South Texas since 2017",
     },
     serviceArea: {
       eyebrow: "Where We Work",
@@ -453,13 +453,13 @@ export const ui: Record<Locale, UiText> = {
       heading: "GARMA POOLS",
       tagline: "Construyendo Albercas Hermosas, Creando Recuerdos Inolvidables.",
       paragraph1:
-        "Fundada en 2020, Garma Pools se especializa en Construcción, Mantenimiento y Remodelación de Albercas.",
+        "Fundada en 2017, Garma Pools se especializa en Construcción, Mantenimiento y Remodelación de Albercas.",
       paragraph2:
         "Estamos comprometidos a entregar un trabajo de calidad, un servicio confiable y la satisfacción total de nuestros clientes. Ya sea construyendo la alberca de tus sueños, renovando una existente, o manteniéndola en perfectas condiciones, nuestro equipo se dedica a hacer tu visión realidad.",
       paragraph3:
         "En Garma Pools, no solo construimos albercas — creamos espacios donde se crean recuerdos para toda la vida.",
       closingLine: "Tu Visión. Nuestra Experiencia. Tu Alberca Perfecta.",
-      footnote: "Sirviendo con orgullo al Sur de Texas desde 2022",
+      footnote: "Sirviendo con orgullo al Sur de Texas desde 2017",
     },
     serviceArea: {
       eyebrow: "Dónde Trabajamos",
