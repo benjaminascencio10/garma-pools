@@ -13,14 +13,14 @@ export function BrandsSection({ locale }: { locale: Locale }) {
         <h2 className="text-xs font-bold tracking-[0.2em] text-navy-700/60 uppercase">
           {t.title}
         </h2>
-        <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
+        <div className="flex flex-wrap items-center justify-center gap-x-16 gap-y-10">
           {brands.map((brand) => (
-            <div key={brand.name} className="relative h-12 w-32 sm:h-14 sm:w-40">
+            <div key={brand.name} className="relative h-20 w-48 sm:h-24 sm:w-56">
               <Image
                 src={brand.logo}
                 alt={`${brand.name} ${t.logoAltSuffix}`}
                 fill
-                sizes="160px"
+                sizes="224px"
                 className="object-contain"
               />
             </div>
