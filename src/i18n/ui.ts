@@ -53,15 +53,6 @@ export interface UiText {
     callButtonLabel: string;
     backHomeLabel: string;
   };
-  quickQuote: {
-    eyebrow: string;
-    title: string;
-    description: string;
-  };
-  howItWorks: {
-    eyebrow: string;
-    title: string;
-  };
   construction: {
     eyebrow: string;
     title: string;
@@ -88,6 +79,13 @@ export interface UiText {
       tileWork: GalleryPhoto;
       finished: GalleryPhoto;
     };
+    categories: {
+      residentialPools: string;
+      residentialSpas: string;
+      waterfallFeatures: string;
+      commercialPools: string;
+      commercialPoolsComingSoon: string;
+    };
   };
   maintenance: {
     photoAlt: string;
@@ -105,6 +103,16 @@ export interface UiText {
       lyon: string;
       hfs: string;
     };
+  };
+  about: {
+    eyebrow: string;
+    heading: string;
+    tagline: string;
+    paragraph1: string;
+    paragraph2: string;
+    paragraph3: string;
+    closingLine: string;
+    footnote: string;
   };
   serviceArea: {
     eyebrow: string;
@@ -124,6 +132,7 @@ export interface UiText {
   footer: {
     links: { label: string; href: string }[];
     rightsReserved: string;
+    financingButtonLabel: string;
   };
   stickyCta: {
     callPrefix: string;
@@ -137,10 +146,10 @@ export const ui: Record<Locale, UiText> = {
     nav: {
       links: [
         { label: "Construction", href: "#construction" },
-        { label: "Projects", href: "#projects" },
+        { label: "About", href: "#about" },
+        { label: "Our Work", href: "#our-work" },
         { label: "Maintenance", href: "#maintenance" },
-        { label: "Financing", href: "#financing" },
-        { label: "How It Works", href: "#how-it-works" },
+        { label: "Financing", href: "/finance" },
         { label: "Service Area", href: "#service-area" },
         { label: "Contact", href: "#contact" },
       ],
@@ -193,15 +202,6 @@ export const ui: Record<Locale, UiText> = {
       callButtonLabel: "Call Garma Pools",
       backHomeLabel: "Back to Home",
     },
-    quickQuote: {
-      eyebrow: "Quick Quote",
-      title: "Find the Right Service for Your Pool",
-      description: "Not sure where to start? Pick what fits your pool best.",
-    },
-    howItWorks: {
-      eyebrow: "Simple Process",
-      title: "How It Works",
-    },
     construction: {
       eyebrow: "Pool Construction",
       title: "Build Your Dream Pool",
@@ -244,6 +244,13 @@ export const ui: Record<Locale, UiText> = {
           alt: "Completed Garma Pools backyard pool and spa, full and ready to enjoy",
         },
       },
+      categories: {
+        residentialPools: "Residential Pools",
+        residentialSpas: "Residential Spas",
+        waterfallFeatures: "Waterfall Features",
+        commercialPools: "Commercial Pools",
+        commercialPoolsComingSoon: "Commercial pool photos coming soon.",
+      },
     },
     maintenance: {
       photoAlt: "Sparkling backyard pool and spa maintained by Garma Pools",
@@ -263,6 +270,19 @@ export const ui: Record<Locale, UiText> = {
         lyon: "Specialized pool loans with competitive rates and flexible terms.",
         hfs: "Fast approvals and payment plans built specifically for pool financing.",
       },
+    },
+    about: {
+      eyebrow: "About Us",
+      heading: "GARMA POOLS",
+      tagline: "Building Beautiful Pools, Creating Lasting Memories.",
+      paragraph1:
+        "Established in 2020, Garma Pools specializes in Pool Construction, Pool Maintenance, and Pool Remodeling.",
+      paragraph2:
+        "We are committed to delivering quality craftsmanship, reliable service, and exceptional customer satisfaction. Whether building your dream pool, renovating an existing one, or keeping it in perfect condition, our team is dedicated to bringing your vision to life.",
+      paragraph3:
+        "At Garma Pools, we don't just build pools — we create spaces where lasting memories are made.",
+      closingLine: "Your Vision. Our Expertise. Your Perfect Pool.",
+      footnote: "Proudly serving South Texas since 2022",
     },
     serviceArea: {
       eyebrow: "Where We Work",
@@ -284,12 +304,14 @@ export const ui: Record<Locale, UiText> = {
     footer: {
       links: [
         { label: "Home", href: "#top" },
-        { label: "Pool Construction", href: "#construction" },
+        { label: "Construction", href: "#construction" },
+        { label: "Our Work", href: "#our-work" },
         { label: "Maintenance", href: "#maintenance" },
-        { label: "Get a Quote", href: "#quote" },
+        { label: "About", href: "#about" },
         { label: "Contact", href: "#contact" },
       ],
       rightsReserved: "All rights reserved.",
+      financingButtonLabel: "Financing",
     },
     stickyCta: {
       callPrefix: "Call",
@@ -301,10 +323,10 @@ export const ui: Record<Locale, UiText> = {
     nav: {
       links: [
         { label: "Construcción", href: "#construction" },
-        { label: "Proyectos", href: "#projects" },
+        { label: "Nosotros", href: "#about" },
+        { label: "Nuestro Trabajo", href: "#our-work" },
         { label: "Mantenimiento", href: "#maintenance" },
-        { label: "Financiamiento", href: "#financing" },
-        { label: "Cómo Funciona", href: "#how-it-works" },
+        { label: "Financiamiento", href: "/finance" },
         { label: "Área de Servicio", href: "#service-area" },
         { label: "Contacto", href: "#contact" },
       ],
@@ -357,15 +379,6 @@ export const ui: Record<Locale, UiText> = {
       callButtonLabel: "Llamar a Garma Pools",
       backHomeLabel: "Volver al Inicio",
     },
-    quickQuote: {
-      eyebrow: "Cotización Rápida",
-      title: "Encuentra el Servicio Adecuado para Tu Alberca",
-      description: "¿No sabes por dónde empezar? Elige lo que mejor se ajuste a tu alberca.",
-    },
-    howItWorks: {
-      eyebrow: "Proceso Simple",
-      title: "Cómo Funciona",
-    },
     construction: {
       eyebrow: "Construcción de Albercas",
       title: "Construye la Alberca de Tus Sueños",
@@ -408,6 +421,13 @@ export const ui: Record<Locale, UiText> = {
           alt: "Alberca y spa de patio trasero de Garma Pools terminados, llenos y listos para disfrutar",
         },
       },
+      categories: {
+        residentialPools: "Albercas Residenciales",
+        residentialSpas: "Spas Residenciales",
+        waterfallFeatures: "Cascadas y Características de Agua",
+        commercialPools: "Albercas Comerciales",
+        commercialPoolsComingSoon: "Fotos de albercas comerciales próximamente.",
+      },
     },
     maintenance: {
       photoAlt: "Alberca y spa de patio trasero mantenidos por Garma Pools",
@@ -427,6 +447,19 @@ export const ui: Record<Locale, UiText> = {
         lyon: "Préstamos especializados para albercas con tasas competitivas y plazos flexibles.",
         hfs: "Aprobaciones rápidas y planes de pago diseñados específicamente para financiar albercas.",
       },
+    },
+    about: {
+      eyebrow: "Quiénes Somos",
+      heading: "GARMA POOLS",
+      tagline: "Construyendo Albercas Hermosas, Creando Recuerdos Inolvidables.",
+      paragraph1:
+        "Fundada en 2020, Garma Pools se especializa en Construcción, Mantenimiento y Remodelación de Albercas.",
+      paragraph2:
+        "Estamos comprometidos a entregar un trabajo de calidad, un servicio confiable y la satisfacción total de nuestros clientes. Ya sea construyendo la alberca de tus sueños, renovando una existente, o manteniéndola en perfectas condiciones, nuestro equipo se dedica a hacer tu visión realidad.",
+      paragraph3:
+        "En Garma Pools, no solo construimos albercas — creamos espacios donde se crean recuerdos para toda la vida.",
+      closingLine: "Tu Visión. Nuestra Experiencia. Tu Alberca Perfecta.",
+      footnote: "Sirviendo con orgullo al Sur de Texas desde 2022",
     },
     serviceArea: {
       eyebrow: "Dónde Trabajamos",
@@ -448,12 +481,14 @@ export const ui: Record<Locale, UiText> = {
     footer: {
       links: [
         { label: "Inicio", href: "#top" },
-        { label: "Construcción de Albercas", href: "#construction" },
+        { label: "Construcción", href: "#construction" },
+        { label: "Nuestro Trabajo", href: "#our-work" },
         { label: "Mantenimiento", href: "#maintenance" },
-        { label: "Cotizar", href: "#quote" },
+        { label: "Nosotros", href: "#about" },
         { label: "Contacto", href: "#contact" },
       ],
       rightsReserved: "Todos los derechos reservados.",
+      financingButtonLabel: "Financiamiento",
     },
     stickyCta: {
       callPrefix: "Llamar",

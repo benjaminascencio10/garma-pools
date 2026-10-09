@@ -49,7 +49,13 @@ export function Footer({ locale }: { locale: Locale }) {
             ))}
           </nav>
 
-          <div className="flex gap-3">
+          <div className="flex flex-col items-start gap-4 sm:items-end">
+            <a
+              href="/finance"
+              className="rounded-full bg-pool-500 px-5 py-2.5 text-sm font-bold whitespace-nowrap text-navy-950 shadow-sm transition hover:-translate-y-0.5 hover:bg-pool-400"
+            >
+              {t.financingButtonLabel}
+            </a>
             <a
               href={company.social.facebook}
               target="_blank"

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { CheckCircle2, ChevronLeft, Phone } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -25,14 +26,25 @@ const emptyContact: QuoteContactInfo = {
   zip: "",
 };
 
+const VALID_SERVICE_IDS: QuoteServiceId[] = ["new-pool", "maintenance", "repair", "other"];
+
+function isQuoteServiceId(value: string | null): value is QuoteServiceId {
+  return value !== null && (VALID_SERVICE_IDS as string[]).includes(value);
+}
+
 export function QuoteWizard({ locale }: { locale: Locale }) {
   const t = ui[locale].quoteWizard;
   const options = quoteServiceOptions[locale];
   const fieldsByService = quoteFieldsByService[locale];
   const serviceLabels = getQuoteServiceLabels(locale);
 
-  const [step, setStep] = useState<Step>(1);
-  const [service, setService] = useState<QuoteServiceId | null>(null);
+  const searchParams = useSearchParams();
+  const presetService = isQuoteServiceId(searchParams.get("service"))
+    ? (searchParams.get("service") as QuoteServiceId)
+    : null;
+
+  const [step, setStep] = useState<Step>(presetService ? 2 : 1);
+  const [service, setService] = useState<QuoteServiceId | null>(presetService);
   const [details, setDetails] = useState<Record<string, string>>({});
   const [contact, setContact] = useState<QuoteContactInfo>(emptyContact);
   const [errors, setErrors] = useState<Record<string, string>>({});

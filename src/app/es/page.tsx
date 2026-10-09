@@ -2,14 +2,11 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { Services } from "@/components/Services";
-import { QuoteWizard } from "@/components/QuoteWizard";
-import { QuickQuoteCalculator } from "@/components/QuickQuoteCalculator";
-import { HowItWorks } from "@/components/HowItWorks";
+import { AboutSection } from "@/components/AboutSection";
 import { ConstructionSection } from "@/components/ConstructionSection";
 import { BrandsSection } from "@/components/BrandsSection";
-import { ProjectsSection } from "@/components/ProjectsSection";
+import { OurWorkSection } from "@/components/OurWorkSection";
 import { MaintenanceSection } from "@/components/MaintenanceSection";
-import { FinancingSection } from "@/components/FinancingSection";
 import { ServiceArea } from "@/components/ServiceArea";
 import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
@@ -73,14 +70,11 @@ export default function HomeEs() {
       <main className="pb-20 lg:pb-0">
         <Hero locale="es" />
         <Services locale="es" />
-        <QuoteWizard locale="es" />
-        <QuickQuoteCalculator locale="es" />
-        <HowItWorks locale="es" />
+        <AboutSection locale="es" />
+        <OurWorkSection locale="es" />
         <ConstructionSection locale="es" />
         <BrandsSection locale="es" />
-        <ProjectsSection locale="es" />
         <MaintenanceSection locale="es" />
-        <FinancingSection locale="es" />
         <ServiceArea locale="es" />
         <CTASection locale="es" />
       </main>

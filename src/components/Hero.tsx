@@ -44,14 +44,14 @@ export function Hero({ locale }: { locale: Locale }) {
 
         <div className="mt-2 flex flex-col gap-3 sm:flex-row">
           <a
-            href="#quote"
-            className="rounded-full bg-pool-500 px-8 py-4 text-center text-base font-bold text-navy-950 shadow-lg shadow-pool-500/20 transition hover:bg-pool-400"
+            href="/quote"
+            className="rounded-full bg-pool-500 px-8 py-4 text-center text-base font-bold text-navy-950 shadow-lg shadow-pool-500/20 transition hover:-translate-y-0.5 hover:scale-105 hover:bg-pool-400"
           >
             {t.hero.ctaPrimary}
           </a>
           <a
             href={company.phoneHref}
-            className="flex items-center justify-center gap-2 rounded-full border-2 border-white/70 px-8 py-4 text-center text-base font-bold text-white transition hover:bg-white hover:text-navy-950"
+            className="flex items-center justify-center gap-2 rounded-full border-2 border-white/70 px-8 py-4 text-center text-base font-bold text-white transition hover:-translate-y-0.5 hover:scale-105 hover:bg-white hover:text-navy-950"
           >
             <Phone className="h-5 w-5" aria-hidden />
             {t.hero.ctaSecondary}
