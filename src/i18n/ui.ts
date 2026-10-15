@@ -20,6 +20,7 @@ export interface UiText {
     ctaPrimary: string;
     ctaSecondary: string;
     photoAlt: string;
+    featureStrip: { title: string; subtitle: string }[];
   };
   services: {
     eyebrow: string;
@@ -167,6 +168,11 @@ export const ui: Record<Locale, UiText> = {
       ctaPrimary: "Get a Free Quote",
       ctaSecondary: "View Our Work",
       photoAlt: "Backyard pool with deck jets, travertine patio, and palm trees built by Garma Pools",
+      featureStrip: [
+        { title: "Custom Pool Construction", subtitle: "Designed around you" },
+        { title: "Pool Maintenance", subtitle: "Clean, safe, and ready" },
+        { title: "Local RGV Service", subtitle: "Brownsville & Rio Grande Valley" },
+      ],
     },
     services: {
       eyebrow: "What We Do",
@@ -345,6 +351,11 @@ export const ui: Record<Locale, UiText> = {
       ctaPrimary: "Cotización Gratis",
       ctaSecondary: "Ver Nuestro Trabajo",
       photoAlt: "Alberca de patio con deck jets, piso de travertino y palmeras, construida por Garma Pools",
+      featureStrip: [
+        { title: "Construcción de Albercas a tu Medida", subtitle: "Diseñada para ti" },
+        { title: "Mantenimiento de Albercas", subtitle: "Limpia, segura y lista" },
+        { title: "Servicio Local en el Valle", subtitle: "Brownsville y el Valle de Texas" },
+      ],
     },
     services: {
       eyebrow: "Qué Hacemos",
