@@ -13,8 +13,9 @@ export interface UiText {
     languageSwitchHref: string;
   };
   hero: {
-    servingPrefix: string; // combined with serviceRegion: `${servingPrefix} ${serviceRegion}`
-    title: string;
+    eyebrow: string;
+    titleLine1: string;
+    titleLine2: string;
     description: string;
     ctaPrimary: string;
     ctaSecondary: string;
@@ -158,13 +159,14 @@ export const ui: Record<Locale, UiText> = {
       languageSwitchHref: "/es",
     },
     hero: {
-      servingPrefix: "Serving the",
-      title: "Pool Construction & Maintenance",
+      eyebrow: "Custom Pool Construction & Maintenance",
+      titleLine1: "Your Dream Pool",
+      titleLine2: "Built Right.",
       description:
-        "From building your dream pool to keeping it crystal clear, Garma Pools helps homeowners maintain and enjoy their pools year-round.",
+        "Custom design, expert craftsmanship and reliable maintenance — all in one place.",
       ctaPrimary: "Get a Free Quote",
-      ctaSecondary: "Call Now",
-      photoAlt: "Completed residential pool and spa built by Garma Pools",
+      ctaSecondary: "View Our Work",
+      photoAlt: "Backyard pool with deck jets, travertine patio, and palm trees built by Garma Pools",
     },
     services: {
       eyebrow: "What We Do",
@@ -335,13 +337,14 @@ export const ui: Record<Locale, UiText> = {
       languageSwitchHref: "/",
     },
     hero: {
-      servingPrefix: "Atendiendo",
-      title: "Construcción y Mantenimiento de Albercas",
+      eyebrow: "Construcción y Mantenimiento de Albercas a tu Medida",
+      titleLine1: "La Alberca de Tus Sueños",
+      titleLine2: "Bien Construida.",
       description:
-        "Desde construir la alberca de tus sueños hasta mantenerla cristalina, Garma Pools ayuda a los dueños de casa a mantener y disfrutar sus albercas todo el año.",
+        "Diseño personalizado, mano de obra experta y mantenimiento confiable — todo en un solo lugar.",
       ctaPrimary: "Cotización Gratis",
-      ctaSecondary: "Llamar Ahora",
-      photoAlt: "Alberca residencial y spa terminados, construidos por Garma Pools",
+      ctaSecondary: "Ver Nuestro Trabajo",
+      photoAlt: "Alberca de patio con deck jets, piso de travertino y palmeras, construida por Garma Pools",
     },
     services: {
       eyebrow: "Qué Hacemos",

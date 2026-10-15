@@ -66,7 +66,7 @@ export default function HomeEs() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <Navbar locale="es" />
+      <Navbar locale="es" transparent />
       <main className="pb-20 lg:pb-0">
         <Hero locale="es" />
         <Services locale="es" />
