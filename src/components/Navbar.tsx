@@ -52,15 +52,22 @@ export function Navbar({
                 />
               </div>
             ) : (
-              <div className="relative h-16 w-16 overflow-hidden rounded-2xl shadow-xl ring-2 ring-white/40 sm:h-20 sm:w-20">
-                <Image
-                  src="/images/logo.jpg"
-                  alt={company.name}
-                  fill
-                  sizes="80px"
-                  className="object-cover"
-                  priority
-                />
+              <div className="flex items-center gap-3">
+                <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-2xl shadow-xl ring-2 ring-white/40 sm:h-20 sm:w-20">
+                  <Image
+                    src="/images/logo.jpg"
+                    alt={company.name}
+                    fill
+                    sizes="80px"
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+                <p className="hidden text-2xl leading-none font-extrabold tracking-tight text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)] sm:block sm:text-3xl">
+                  GARMA
+                  <br />
+                  <span className="text-pool-400">POOLS</span>
+                </p>
               </div>
             )}
           </a>
