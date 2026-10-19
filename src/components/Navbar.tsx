@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { Menu, Phone, X } from "lucide-react";
 import { Container } from "@/components/ui/Container";
@@ -16,18 +16,12 @@ export function Navbar({
   transparent?: boolean;
 }) {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const t = ui[locale];
 
-  useEffect(() => {
-    if (!transparent) return;
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [transparent]);
-
-  const solid = !transparent || scrolled;
+  // The homepage navbar stays transparent at every scroll position — it
+  // never switches to the solid aqua bar. Only non-homepage pages (where
+  // transparent is left false) render solid.
+  const solid = !transparent;
 
   return (
     <>
@@ -52,23 +46,15 @@ export function Navbar({
                 />
               </div>
             ) : (
-              <div className="flex items-center gap-3">
-                <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-2xl shadow-xl ring-2 ring-white/40 sm:h-20 sm:w-20">
-                  <Image
-                    src="/images/logo.jpg"
-                    alt={company.name}
-                    fill
-                    sizes="80px"
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-                <p className="hidden text-2xl leading-none font-extrabold tracking-tight text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)] sm:block sm:text-3xl">
-                  GARMA
-                  <br />
-                  <span className="text-pool-400">POOLS</span>
-                </p>
-              </div>
+              <Image
+                src="/images/logo-horizontal.png"
+                alt={company.name}
+                width={2048}
+                height={683}
+                sizes="260px"
+                className="h-14 w-auto drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] sm:h-16"
+                priority
+              />
             )}
           </a>
 
