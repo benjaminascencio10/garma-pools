@@ -147,9 +147,7 @@ export const ui: Record<Locale, UiText> = {
   en: {
     nav: {
       links: [
-        { label: "Construction", href: "#construction" },
         { label: "About", href: "#about" },
-        { label: "Our Work", href: "#our-work" },
         { label: "Maintenance", href: "#maintenance" },
         { label: "Financing", href: "/finance" },
         { label: "Service Area", href: "#service-area" },
@@ -166,7 +164,7 @@ export const ui: Record<Locale, UiText> = {
       description:
         "Custom design, expert craftsmanship and reliable maintenance — all in one place.",
       ctaPrimary: "Get a Free Quote",
-      ctaSecondary: "View Our Work",
+      ctaSecondary: "See Our Services",
       photoAlt: "Backyard pool with deck jets, travertine patio, and palm trees built by Garma Pools",
       featureStrip: [
         { title: "Custom Pool Construction", subtitle: "Designed around you" },
@@ -312,8 +310,6 @@ export const ui: Record<Locale, UiText> = {
     footer: {
       links: [
         { label: "Home", href: "#top" },
-        { label: "Construction", href: "#construction" },
-        { label: "Our Work", href: "#our-work" },
         { label: "Maintenance", href: "#maintenance" },
         { label: "About", href: "#about" },
         { label: "Contact", href: "#contact" },
@@ -330,9 +326,7 @@ export const ui: Record<Locale, UiText> = {
   es: {
     nav: {
       links: [
-        { label: "Construcción", href: "#construction" },
         { label: "Nosotros", href: "#about" },
-        { label: "Nuestro Trabajo", href: "#our-work" },
         { label: "Mantenimiento", href: "#maintenance" },
         { label: "Financiamiento", href: "/finance" },
         { label: "Área de Servicio", href: "#service-area" },
@@ -349,7 +343,7 @@ export const ui: Record<Locale, UiText> = {
       description:
         "Diseño personalizado, mano de obra experta y mantenimiento confiable — todo en un solo lugar.",
       ctaPrimary: "Cotización Gratis",
-      ctaSecondary: "Ver Nuestro Trabajo",
+      ctaSecondary: "Ver Nuestros Servicios",
       photoAlt: "Alberca de patio con deck jets, piso de travertino y palmeras, construida por Garma Pools",
       featureStrip: [
         { title: "Construcción de Albercas a tu Medida", subtitle: "Diseñada para ti" },
@@ -495,8 +489,6 @@ export const ui: Record<Locale, UiText> = {
     footer: {
       links: [
         { label: "Inicio", href: "#top" },
-        { label: "Construcción", href: "#construction" },
-        { label: "Nuestro Trabajo", href: "#our-work" },
         { label: "Mantenimiento", href: "#maintenance" },
         { label: "Nosotros", href: "#about" },
         { label: "Contacto", href: "#contact" },

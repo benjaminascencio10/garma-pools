@@ -49,7 +49,7 @@ export function Hero({ locale }: { locale: Locale }) {
               <ArrowRight className="h-4 w-4" aria-hidden />
             </a>
             <a
-              href="#our-work"
+              href="#services"
               className="flex items-center justify-center gap-2 rounded-full border-2 border-white/70 px-8 py-4 text-center text-base font-bold text-white transition hover:-translate-y-0.5 hover:scale-105 hover:bg-white hover:text-navy-950"
             >
               <ChevronRight className="h-4 w-4" aria-hidden />
