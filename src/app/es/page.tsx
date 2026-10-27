@@ -3,9 +3,7 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { Services } from "@/components/Services";
 import { AboutSection } from "@/components/AboutSection";
-import { ConstructionSection } from "@/components/ConstructionSection";
 import { BrandsSection } from "@/components/BrandsSection";
-import { OurWorkSection } from "@/components/OurWorkSection";
 import { MaintenanceSection } from "@/components/MaintenanceSection";
 import { ServiceArea } from "@/components/ServiceArea";
 import { CTASection } from "@/components/CTASection";
@@ -71,8 +69,6 @@ export default function HomeEs() {
         <Hero locale="es" />
         <Services locale="es" />
         <AboutSection locale="es" />
-        <OurWorkSection locale="es" />
-        <ConstructionSection locale="es" />
         <BrandsSection locale="es" />
         <MaintenanceSection locale="es" />
         <ServiceArea locale="es" />
