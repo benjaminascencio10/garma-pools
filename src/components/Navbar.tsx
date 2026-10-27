@@ -10,7 +10,7 @@ import type { Locale } from "@/i18n/locale";
 
 export function Navbar({
   locale,
-  transparent = false,
+  transparent = true,
 }: {
   locale: Locale;
   transparent?: boolean;
@@ -18,9 +18,9 @@ export function Navbar({
   const [open, setOpen] = useState(false);
   const t = ui[locale];
 
-  // The homepage navbar stays transparent at every scroll position — it
-  // never switches to the solid aqua bar. Only non-homepage pages (where
-  // transparent is left false) render solid.
+  // The navbar stays transparent everywhere, on every page, at every
+  // scroll position — it never switches to the solid aqua bar. Pass
+  // transparent={false} explicitly on a page that needs the solid bar.
   const solid = !transparent;
 
   return (
