@@ -24,7 +24,7 @@ export default function QuotePage() {
   return (
     <>
       <Navbar locale="en" />
-      <main className="pb-20 lg:pb-0">
+      <main id="main" className="pb-24 lg:pb-0">
         <Suspense fallback={null}>
           <QuoteWizard locale="en" />
         </Suspense>

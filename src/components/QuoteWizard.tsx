@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { CheckCircle2, ChevronLeft, Phone } from "lucide-react";
 import { Container } from "@/components/ui/Container";
@@ -13,6 +14,7 @@ import {
 } from "@/data/quoteWizard";
 import { company } from "@/data/company";
 import { submitQuoteRequest, type QuoteContactInfo } from "@/lib/quote";
+import { homePath } from "@/lib/paths";
 import { ui } from "@/i18n/ui";
 import type { Locale } from "@/i18n/locale";
 
@@ -108,25 +110,17 @@ export function QuoteWizard({ locale }: { locale: Locale }) {
     }
   }
 
-  function reset() {
-    setStep(1);
-    setService(null);
-    setDetails({});
-    setContact(emptyContact);
-    setErrors({});
-  }
-
   return (
-    <section id="quote" className="bg-navy-950 py-20 text-white sm:py-24">
+    <section id="quote" className="bg-sand-50 py-16 text-navy-900 sm:py-24">
       <Container className="flex flex-col gap-10">
-        <SectionHeading eyebrow={t.eyebrow} title={t.title} description={t.description} light />
+        <SectionHeading eyebrow={t.eyebrow} title={t.title} description={t.description} />
 
         {step < 4 && <StepIndicator step={step} labels={t.stepLabels} />}
 
-        <div className="mx-auto w-full max-w-3xl rounded-3xl bg-white p-6 text-navy-900 shadow-xl sm:p-10">
+        <div className="mx-auto w-full max-w-3xl rounded-[1.75rem] border border-navy-900/8 bg-white p-6 text-navy-900 shadow-[0_28px_60px_-36px_rgba(7,20,34,0.45)] sm:p-10">
           {step === 1 && (
             <div className="flex flex-col gap-6">
-              <h3 className="text-xl font-extrabold">{t.step1Title}</h3>
+              <h3 className="font-serif text-2xl font-medium">{t.step1Title}</h3>
               <div className="grid gap-4 sm:grid-cols-2">
                 {options.map((option) => {
                   const Icon = option.icon;
@@ -135,7 +129,7 @@ export function QuoteWizard({ locale }: { locale: Locale }) {
                       key={option.id}
                       type="button"
                       onClick={() => selectService(option.id)}
-                      className="flex flex-col items-start gap-3 rounded-2xl border-2 border-navy-900/10 p-5 text-left transition hover:border-pool-500 hover:bg-pool-100/40"
+                      className="flex flex-col items-start gap-3 rounded-2xl border border-navy-900/10 bg-sand-50 p-5 text-left transition duration-300 hover:-translate-y-0.5 hover:border-pool-600 hover:bg-white hover:shadow-[0_16px_30px_-24px_rgba(7,20,34,0.45)]"
                     >
                       <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-pool-500/10 text-pool-600">
                         <Icon className="h-5 w-5" aria-hidden />
@@ -159,7 +153,7 @@ export function QuoteWizard({ locale }: { locale: Locale }) {
                 <ChevronLeft className="h-4 w-4" aria-hidden />
                 {t.backLabel}
               </button>
-              <h3 className="text-xl font-extrabold">{t.step2TitlePrefix}</h3>
+              <h3 className="font-serif text-2xl font-medium">{t.step2TitlePrefix}</h3>
               <p className="text-sm text-navy-700/70">
                 {t.serviceSelectedLabel} <span className="font-bold">{serviceLabels[service]}</span>
               </p>
@@ -170,15 +164,16 @@ export function QuoteWizard({ locale }: { locale: Locale }) {
                     key={field.name}
                     className={field.type === "textarea" ? "sm:col-span-2" : ""}
                   >
-                    <label className="mb-1.5 block text-sm font-semibold text-navy-900">
+                    <label htmlFor={`quote-${field.name}`} className="mb-1.5 block text-sm font-semibold text-navy-900">
                       {field.label}
                       {field.required && <span className="text-pool-600"> *</span>}
                     </label>
                     {field.type === "select" ? (
                       <select
+                        id={`quote-${field.name}`}
                         value={details[field.name] ?? ""}
                         onChange={(e) => updateDetail(field.name, e.target.value)}
-                        className="w-full rounded-xl border border-navy-900/15 px-4 py-3 text-sm focus:border-pool-500 focus:outline-none"
+                        className="w-full rounded-xl border border-navy-900/15 bg-white px-4 py-3 text-sm transition focus:border-pool-600 focus:ring-4 focus:ring-pool-600/15 focus:outline-none"
                       >
                         <option value="">{t.selectPlaceholder}</option>
                         {field.options?.map((opt) => (
@@ -189,19 +184,21 @@ export function QuoteWizard({ locale }: { locale: Locale }) {
                       </select>
                     ) : field.type === "textarea" ? (
                       <textarea
+                        id={`quote-${field.name}`}
                         value={details[field.name] ?? ""}
                         onChange={(e) => updateDetail(field.name, e.target.value)}
                         placeholder={field.placeholder}
                         rows={3}
-                        className="w-full rounded-xl border border-navy-900/15 px-4 py-3 text-sm focus:border-pool-500 focus:outline-none"
+                        className="w-full rounded-xl border border-navy-900/15 bg-white px-4 py-3 text-sm transition focus:border-pool-600 focus:ring-4 focus:ring-pool-600/15 focus:outline-none"
                       />
                     ) : (
                       <input
+                        id={`quote-${field.name}`}
                         type="text"
                         value={details[field.name] ?? ""}
                         onChange={(e) => updateDetail(field.name, e.target.value)}
                         placeholder={field.placeholder}
-                        className="w-full rounded-xl border border-navy-900/15 px-4 py-3 text-sm focus:border-pool-500 focus:outline-none"
+                        className="w-full rounded-xl border border-navy-900/15 bg-white px-4 py-3 text-sm transition focus:border-pool-600 focus:ring-4 focus:ring-pool-600/15 focus:outline-none"
                       />
                     )}
                     {errors[field.name] && (
@@ -214,7 +211,7 @@ export function QuoteWizard({ locale }: { locale: Locale }) {
               <button
                 type="button"
                 onClick={() => validateStep2() && setStep(3)}
-                className="mt-2 rounded-full bg-pool-500 px-6 py-3.5 text-sm font-bold text-navy-950 transition hover:bg-pool-400"
+                className="btn btn-primary mt-2 w-fit"
               >
                 {t.continueLabel}
               </button>
@@ -231,7 +228,7 @@ export function QuoteWizard({ locale }: { locale: Locale }) {
                 <ChevronLeft className="h-4 w-4" aria-hidden />
                 {t.backLabel}
               </button>
-              <h3 className="text-xl font-extrabold">{t.step3Title}</h3>
+              <h3 className="font-serif text-2xl font-medium">{t.step3Title}</h3>
 
               <div className="grid gap-5 sm:grid-cols-2">
                 <TextField
@@ -274,7 +271,7 @@ export function QuoteWizard({ locale }: { locale: Locale }) {
                 type="button"
                 disabled={submitting}
                 onClick={handleSubmit}
-                className="mt-2 rounded-full bg-pool-500 px-6 py-3.5 text-sm font-bold text-navy-950 transition hover:bg-pool-400 disabled:opacity-60"
+                className="btn btn-primary mt-2 w-fit"
               >
                 {submitting ? t.sendingLabel : t.submitLabel}
               </button>
@@ -284,23 +281,16 @@ export function QuoteWizard({ locale }: { locale: Locale }) {
           {step === 4 && (
             <div className="flex flex-col items-center gap-5 py-6 text-center">
               <CheckCircle2 className="h-14 w-14 text-pool-500" aria-hidden />
-              <h3 className="text-2xl font-extrabold">{t.thankYouTitle}</h3>
-              <p className="max-w-md text-navy-700/80">{t.thankYouBody}</p>
+              <h3 className="font-serif text-3xl font-medium">{t.thankYouTitle}</h3>
+              <p className="max-w-md text-navy-700">{t.thankYouBody}</p>
               <div className="mt-2 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href={company.phoneHref}
-                  className="flex items-center justify-center gap-2 rounded-full bg-pool-500 px-6 py-3.5 text-sm font-bold text-navy-950 hover:bg-pool-400"
-                >
+                <a href={company.phoneHref} className="btn btn-primary">
                   <Phone className="h-4 w-4" aria-hidden />
                   {t.callButtonLabel}
                 </a>
-                <button
-                  type="button"
-                  onClick={reset}
-                  className="rounded-full border-2 border-navy-900/15 px-6 py-3.5 text-sm font-bold text-navy-900 hover:bg-navy-900/5"
-                >
+                <Link href={homePath(locale)} className="btn btn-line text-navy-900">
                   {t.backHomeLabel}
-                </button>
+                </Link>
               </div>
             </div>
           )}
@@ -312,40 +302,34 @@ export function QuoteWizard({ locale }: { locale: Locale }) {
 
 function StepIndicator({ step, labels }: { step: Step; labels: [string, string, string] }) {
   return (
-    <div className="mx-auto flex w-full max-w-3xl items-center justify-center gap-2 sm:gap-4">
+    <ol className="mx-auto flex w-full max-w-3xl items-center justify-center gap-2 sm:gap-4">
       {labels.map((label, i) => {
         const index = (i + 1) as Step;
         const active = step === index;
         const done = step > index;
         return (
-          <div key={label} className="flex items-center gap-2 sm:gap-4">
+          <li key={label} className="flex items-center gap-2 sm:gap-4" aria-current={active ? "step" : undefined}>
             <div className="flex flex-col items-center gap-1.5">
               <div
                 className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold ${
-                  done
-                    ? "bg-pool-500 text-navy-950"
-                    : active
-                      ? "border-2 border-pool-500 text-pool-100"
-                      : "border-2 border-white/20 text-white/40"
+                  done || active
+                    ? "bg-navy-900 text-white"
+                    : "border border-navy-900/15 bg-white text-navy-700"
                 }`}
               >
                 {i + 1}
               </div>
-              <span
-                className={`hidden text-xs font-semibold sm:block ${
-                  active || done ? "text-white" : "text-white/40"
-                }`}
-              >
+              <span className={`hidden text-xs font-semibold sm:block ${active || done ? "text-navy-900" : "text-navy-700"}`}>
                 {label}
               </span>
             </div>
             {i < labels.length - 1 && (
-              <div className={`h-0.5 w-8 sm:w-16 ${done ? "bg-pool-500" : "bg-white/15"}`} />
+              <div className={`mb-5 h-px w-8 sm:w-16 ${done ? "bg-navy-900" : "bg-navy-900/15"}`} />
             )}
-          </div>
+          </li>
         );
       })}
-    </div>
+    </ol>
   );
 }
 
@@ -364,17 +348,20 @@ function TextField({
   required?: boolean;
   type?: string;
 }) {
+  const id = useId();
   return (
     <div>
-      <label className="mb-1.5 block text-sm font-semibold text-navy-900">
+      <label htmlFor={id} className="mb-1.5 block text-sm font-semibold text-navy-900">
         {label}
         {required && <span className="text-pool-600"> *</span>}
       </label>
       <input
+        id={id}
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-xl border border-navy-900/15 px-4 py-3 text-sm focus:border-pool-500 focus:outline-none"
+        aria-invalid={error ? true : undefined}
+        className="w-full rounded-xl border border-navy-900/15 bg-white px-4 py-3 text-sm transition focus:border-pool-600 focus:ring-4 focus:ring-pool-600/15 focus:outline-none"
       />
       {error && <p className="mt-1 text-xs font-semibold text-red-600">{error}</p>}
     </div>

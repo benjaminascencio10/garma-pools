@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
+import { TrustStrip } from "@/components/TrustStrip";
 import { Services } from "@/components/Services";
+import { OurWorkSection } from "@/components/OurWorkSection";
 import { AboutSection } from "@/components/AboutSection";
 import { BrandsSection } from "@/components/BrandsSection";
 import { MaintenanceSection } from "@/components/MaintenanceSection";
+import { FinancingSection } from "@/components/FinancingSection";
 import { ServiceArea } from "@/components/ServiceArea";
 import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
@@ -40,11 +43,20 @@ export const metadata: Metadata = {
     siteName: "Garma Pools",
     locale: "es_US",
     type: "website",
+    images: [
+      {
+        url: "/images/hero-poolside.jpg",
+        width: 2880,
+        height: 1273,
+        alt: "Alberca de patio con deck jets, piso de travertino y palmeras, construida por Garma Pools",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Garma Pools | Construcción y Mantenimiento de Albercas",
     description: "Construcción, mantenimiento, limpieza y reparación de albercas en el Valle de Texas.",
+    images: ["/images/hero-poolside.jpg"],
   },
   alternates: {
     canonical: `${siteUrl}/es`,
@@ -64,13 +76,16 @@ export default function HomeEs() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <Navbar locale="es" transparent />
-      <main className="pb-20 lg:pb-0">
+      <Navbar locale="es" overlay />
+      <main id="main" className="pb-24 lg:pb-0">
         <Hero locale="es" />
+        <TrustStrip locale="es" />
         <Services locale="es" />
+        <OurWorkSection locale="es" />
         <AboutSection locale="es" />
-        <BrandsSection locale="es" />
         <MaintenanceSection locale="es" />
+        <BrandsSection locale="es" />
+        <FinancingSection locale="es" />
         <ServiceArea locale="es" />
         <CTASection locale="es" />
       </main>

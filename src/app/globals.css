@@ -1,80 +1,214 @@
 @import "tailwindcss";
 
-:root {
-  --color-navy-950: #061826;
-  --color-navy-900: #0a2438;
-  --color-navy-800: #0f3350;
-  --color-navy-700: #154568;
+@theme {
+  --color-background: #f6f3ec;
+  --color-foreground: #0e2944;
 
-  --color-pool-600: #0891a8;
-  --color-pool-500: #0eaec9;
-  --color-pool-400: #33c3de;
-  --color-pool-100: #d6f2f8;
+  --color-navy-950: #071422;
+  --color-navy-900: #0e2944;
+  --color-navy-800: #163656;
+  --color-navy-700: #3d5166;
 
-  --color-sky-50: #eef9fc;
+  --color-pool-600: #0c6e82;
+  --color-pool-500: #14b8d4;
+  --color-pool-400: #7edff0;
+  --color-pool-100: #e7f8fb;
 
-  --color-sand-500: #f0a63b;
-  --color-sand-400: #f4b85f;
+  --color-sky-50: #f3f7f8;
+  --color-sand-50: #f6f3ec;
+  --color-sand-500: #c4a265;
+  --color-sand-400: #d4b67e;
 
-  --background: #ffffff;
-  --foreground: var(--color-navy-900);
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-
-  --color-navy-950: var(--color-navy-950);
-  --color-navy-900: var(--color-navy-900);
-  --color-navy-800: var(--color-navy-800);
-  --color-navy-700: var(--color-navy-700);
-
-  --color-pool-600: var(--color-pool-600);
-  --color-pool-500: var(--color-pool-500);
-  --color-pool-400: var(--color-pool-400);
-  --color-pool-100: var(--color-pool-100);
-
-  --color-sky-50: var(--color-sky-50);
-
-  --color-sand-500: var(--color-sand-500);
-  --color-sand-400: var(--color-sand-400);
-
-  --font-sans: var(--font-inter);
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), Georgia, "Times New Roman", serif;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Offset anchor scroll targets so the sticky header doesn't cover them. */
-section[id] {
-  scroll-margin-top: 7rem;
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
 }
 
-/* Theme the Leaflet service-area map to match the dark navy design system. */
+::selection {
+  background: #c5eef6;
+  color: var(--color-navy-950);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-pool-600);
+  outline-offset: 3px;
+}
+
+section[id] {
+  scroll-margin-top: 6.5rem;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  z-index: 80;
+  transform: translateY(-160%);
+  border-radius: 9999px;
+  background: white;
+  color: var(--color-navy-950);
+  padding: 0.7rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3.25rem;
+    border-radius: 9999px;
+    padding: 0.85rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    transition:
+      transform 200ms ease,
+      background-color 200ms ease,
+      color 200ms ease,
+      border-color 200ms ease,
+      box-shadow 200ms ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+  }
+
+  .btn-primary {
+    background: var(--color-navy-900);
+    color: white;
+    box-shadow: 0 16px 30px -20px rgba(7, 20, 34, 0.9);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-navy-800);
+  }
+
+  .btn-light {
+    background: white;
+    color: var(--color-navy-950);
+    box-shadow: 0 16px 30px -18px rgba(7, 20, 34, 0.55);
+  }
+
+  .btn-light:hover {
+    background: var(--color-pool-100);
+  }
+
+  .btn-line {
+    border: 1px solid currentColor;
+    background: transparent;
+    color: inherit;
+  }
+
+  .btn-line:hover {
+    background: white;
+    color: var(--color-navy-950);
+  }
+
+  .btn-glass {
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.12);
+    color: white;
+    backdrop-filter: blur(10px);
+  }
+
+  .btn-glass:hover {
+    background: white;
+    color: var(--color-navy-950);
+  }
+}
+
+@keyframes kenburns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.ken-burns {
+  animation: kenburns 36s ease-in-out alternate infinite;
+  transform-origin: center center;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-item {
+      animation: rise-in linear both;
+      animation-timeline: view();
+      animation-range: entry 8% cover 32%;
+    }
+  }
+}
+
+@keyframes story-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.story-progress {
+  transform-origin: left center;
+  animation: story-progress 5.5s linear forwards;
+}
+
 .leaflet-container {
   background: var(--color-navy-950);
   font-family: var(--font-sans);
+  z-index: 0;
 }
 
 .leaflet-control-attribution {
-  background: rgba(6, 24, 38, 0.75) !important;
-  color: rgba(255, 255, 255, 0.6) !important;
+  background: rgba(7, 20, 34, 0.75) !important;
+  color: rgba(255, 255, 255, 0.65) !important;
 }
 
 .leaflet-control-attribution a {
-  color: rgba(255, 255, 255, 0.85) !important;
+  color: white !important;
 }
 
 .leaflet-control-zoom a {
-  background: rgba(10, 36, 56, 0.9) !important;
-  color: #ffffff !important;
-  border-color: rgba(255, 255, 255, 0.15) !important;
+  background: rgba(14, 41, 68, 0.94) !important;
+  color: white !important;
+  border-color: rgba(255, 255, 255, 0.16) !important;
 }
 
 .leaflet-control-zoom a:hover {
@@ -83,13 +217,34 @@ section[id] {
 
 .leaflet-tooltip {
   background: var(--color-navy-900);
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  font-weight: 700;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  font-weight: 650;
   font-size: 0.75rem;
   box-shadow: none;
 }
 
 .leaflet-tooltip-top:before {
   border-top-color: var(--color-navy-900);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .ken-burns,
+  .story-progress,
+  .reveal-item {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }

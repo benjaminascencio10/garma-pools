@@ -1,58 +1,62 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Reveal } from "@/components/ui/Reveal";
 import { maintenanceBenefits } from "@/data/maintenance";
 import { ui } from "@/i18n/ui";
+import { quotePath } from "@/lib/paths";
 import type { Locale } from "@/i18n/locale";
 
 export function MaintenanceSection({ locale }: { locale: Locale }) {
   const t = ui[locale].maintenance;
 
   return (
-    <section id="maintenance" className="bg-sky-50 py-20 sm:py-24">
-      <Container className="grid gap-12 lg:grid-cols-2 lg:items-center">
-        <div className="relative order-2 h-80 w-full overflow-hidden rounded-2xl lg:order-1 lg:h-full">
-          <Image
-            src="/images/maintenance-pool.jpg"
-            alt={t.photoAlt}
-            fill
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            className="object-cover"
-          />
-        </div>
+    <section id="maintenance" className="bg-white py-24 sm:py-32">
+      <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+        <Reveal className="relative order-2 lg:order-1">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] bg-navy-900 shadow-[0_28px_60px_-36px_rgba(7,20,34,0.6)]">
+            <Image
+              src="/images/maintenance-pool.jpg"
+              alt={t.photoAlt}
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+        </Reveal>
 
-        <div className="order-1 flex flex-col gap-6 lg:order-2">
-          <SectionHeading
-            eyebrow={t.eyebrow}
-            title={t.title}
-            description={t.description}
-            align="left"
-          />
+        <Reveal className="order-1 flex flex-col gap-6 lg:order-2">
+          <span className="text-[0.72rem] font-semibold tracking-[0.22em] text-pool-600 uppercase">
+            {t.eyebrow}
+          </span>
+          <h2 className="font-serif text-4xl leading-tight font-medium tracking-tight text-navy-900 sm:text-5xl">
+            {t.title}
+          </h2>
+          <p className="max-w-xl text-base leading-relaxed text-navy-700 sm:text-lg">{t.description}</p>
 
-          <div className="grid grid-cols-2 gap-4">
+          <ul className="grid gap-3 sm:grid-cols-2">
             {maintenanceBenefits[locale].map((benefit) => {
               const Icon = benefit.icon;
               return (
-                <div
+                <li
                   key={benefit.title}
-                  className="flex flex-col items-start gap-2 rounded-2xl border border-navy-900/10 bg-white p-4"
+                  className="flex items-center gap-3 rounded-2xl border border-navy-900/8 bg-sand-50 px-4 py-4"
                 >
-                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-pool-500/10 text-pool-600">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-pool-600 shadow-sm">
                     <Icon className="h-5 w-5" aria-hidden />
-                  </div>
-                  <p className="text-sm font-bold text-navy-900">{benefit.title}</p>
-                </div>
+                  </span>
+                  <span className="text-sm font-semibold text-navy-900">{benefit.title}</span>
+                </li>
               );
             })}
-          </div>
+          </ul>
 
-          <a
-            href="#quote"
-            className="mt-2 inline-flex w-fit items-center justify-center rounded-full bg-pool-500 px-7 py-3.5 text-sm font-bold text-navy-950 transition hover:bg-pool-400"
-          >
+          <Link href={quotePath(locale, "maintenance")} className="btn btn-primary w-fit">
             {t.ctaLabel}
-          </a>
-        </div>
+            <ArrowRight className="h-4 w-4" aria-hidden />
+          </Link>
+        </Reveal>
       </Container>
     </section>
   );

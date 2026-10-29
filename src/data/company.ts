@@ -6,6 +6,8 @@ export const company = {
   name: "Garma Pools",
   phone: "956-254-3142",
   phoneHref: "tel:+19562543142",
+  // Matches the established-year stated in the about copy.
+  foundedYear: 2017,
 
   social: {
     facebook: "https://www.facebook.com/garmapools",
