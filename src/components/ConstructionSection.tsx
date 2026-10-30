@@ -1,7 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { constructionCategories } from "@/data/construction";
 import { ui } from "@/i18n/ui";
+import { quotePath } from "@/lib/paths";
 import type { Locale } from "@/i18n/locale";
 
 export function ConstructionSection({ locale }: { locale: Locale }) {
@@ -35,12 +37,9 @@ export function ConstructionSection({ locale }: { locale: Locale }) {
               ))}
             </div>
 
-            <a
-              href="#quote"
-              className="mt-2 inline-flex w-fit items-center justify-center rounded-full bg-pool-500 px-7 py-3.5 text-sm font-bold text-navy-950 transition hover:bg-pool-400"
-            >
+            <Link href={quotePath(locale, "new-pool")} className="btn btn-light mt-2 w-fit">
               {t.ctaLabel}
-            </a>
+            </Link>
           </div>
 
           <div className="relative h-80 w-full overflow-hidden rounded-2xl lg:h-full">

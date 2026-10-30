@@ -23,7 +23,7 @@ export default function FinancePage() {
   return (
     <>
       <Navbar locale="en" />
-      <main className="pb-20 lg:pb-0">
+      <main id="main" className="pb-24 lg:pb-0">
         <FinancingSection locale="en" />
       </main>
       <Footer locale="en" />

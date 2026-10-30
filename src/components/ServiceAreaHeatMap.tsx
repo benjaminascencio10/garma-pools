@@ -67,10 +67,10 @@ export function ServiceAreaHeatMap({
 
         L.circle(coord, {
           radius: city.confirmed ? 9000 : 6000,
-          color: city.confirmed ? "#f0a63b" : "#33c3de",
+          color: city.confirmed ? "#c4a265" : "#5ed4e8",
           weight: 1,
-          opacity: city.confirmed ? 0.6 : 0.35,
-          fillColor: city.confirmed ? "#f0a63b" : "#33c3de",
+          opacity: city.confirmed ? 0.7 : 0.4,
+          fillColor: city.confirmed ? "#c4a265" : "#5ed4e8",
           fillOpacity: city.confirmed ? 0.3 : 0.16,
         }).addTo(map);
 
@@ -78,7 +78,7 @@ export function ServiceAreaHeatMap({
           radius: 4,
           color: "#061826",
           weight: 1,
-          fillColor: city.confirmed ? "#f0a63b" : "#33c3de",
+          fillColor: city.confirmed ? "#c4a265" : "#5ed4e8",
           fillOpacity: 1,
         })
           .bindTooltip(city.confirmed ? city.name : `${city.name} — ${unconfirmedTooltip}`)
@@ -104,7 +104,7 @@ export function ServiceAreaHeatMap({
       ref={containerRef}
       role="img"
       aria-label={ariaLabel}
-      className="h-64 w-full max-w-3xl overflow-hidden rounded-3xl border border-white/10 bg-navy-950 sm:h-96"
+      className="h-80 w-full overflow-hidden rounded-[1.75rem] border border-white/10 bg-navy-950 shadow-[0_24px_50px_-32px_rgba(0,0,0,0.55)] sm:h-[28rem]"
     />
   );
 }

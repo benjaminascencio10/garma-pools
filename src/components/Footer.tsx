@@ -1,9 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Phone } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { FacebookIcon } from "@/components/ui/SocialIcons";
 import { company, companyText } from "@/data/company";
 import { ui } from "@/i18n/ui";
+import { pageHref } from "@/lib/paths";
 import type { Locale } from "@/i18n/locale";
 
 export function Footer({ locale }: { locale: Locale }) {
@@ -11,64 +13,59 @@ export function Footer({ locale }: { locale: Locale }) {
   const text = companyText[locale];
 
   return (
-    <footer className="bg-navy-950 py-14 text-white">
-      <Container className="flex flex-col gap-10">
-        <div className="flex flex-col gap-8 sm:flex-row sm:justify-between">
+    <footer className="bg-navy-950 py-16 text-white">
+      <Container className="flex flex-col gap-12">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_auto]">
           <div>
-            <div className="flex items-center gap-3">
+            <Link href={pageHref(locale, "#top")} className="inline-flex">
               <Image
-                src="/images/logo.jpg"
+                src="/images/logo-horizontal.png"
                 alt={company.name}
-                width={56}
-                height={56}
-                className="h-14 w-14 rounded-xl"
+                width={2048}
+                height={683}
+                className="h-12 w-auto"
               />
-              <div>
-                <p className="text-xl font-extrabold">{company.name.toUpperCase()}</p>
-                <p className="text-sm font-medium text-pool-100">{text.tagline}</p>
-              </div>
-            </div>
+            </Link>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/70">{text.tagline}</p>
+            <p className="mt-2 text-sm text-white/55">{text.serviceRegion}</p>
             <a
               href={company.phoneHref}
-              className="mt-3 flex items-center gap-2 text-sm font-bold text-white/85 hover:text-white"
+              className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-pool-100"
             >
               <Phone className="h-4 w-4" aria-hidden />
               {company.phone}
             </a>
           </div>
 
-          <nav className="grid grid-cols-2 gap-x-8 gap-y-2 sm:grid-cols-1">
+          <nav className="grid content-start gap-2" aria-label={company.name}>
             {t.links.map((link) => (
-              <a
+              <Link
                 key={link.href}
-                href={link.href}
-                className="text-sm text-white/70 hover:text-white"
+                href={pageHref(locale, link.href)}
+                className="text-sm text-white/75 transition hover:text-white"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
-          <div className="flex flex-col items-start gap-4 sm:items-end">
-            <a
-              href="/finance"
-              className="rounded-full bg-pool-500 px-5 py-2.5 text-sm font-bold whitespace-nowrap text-navy-950 shadow-sm transition hover:-translate-y-0.5 hover:bg-pool-400"
-            >
+          <div className="flex flex-col items-start gap-4">
+            <Link href={pageHref(locale, "/finance")} className="btn btn-light min-h-11">
               {t.financingButtonLabel}
-            </a>
+            </Link>
             <a
               href={company.social.facebook}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 hover:border-white/40"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 transition hover:border-white/40 hover:bg-white/10"
             >
               <FacebookIcon className="h-4 w-4" aria-hidden />
             </a>
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-6 text-xs text-white/40">
+        <div className="border-t border-white/10 pt-6 text-xs text-white/45">
           © {new Date().getFullYear()} {company.name}. {t.rightsReserved}
         </div>
       </Container>

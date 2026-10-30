@@ -11,6 +11,8 @@ export interface UiText {
     getQuote: string;
     languageSwitchLabel: string; // label of the *other* language, e.g. "ES" on the English site
     languageSwitchHref: string;
+    openMenu: string;
+    closeMenu: string;
   };
   hero: {
     eyebrow: string;
@@ -74,6 +76,11 @@ export interface UiText {
     projectLabel: string; // combined with a number, e.g. "Project 1"
     completedProjectsTitle: string;
     completedProjectAlt: string; // alt text for each completed-project thumbnail
+    previousLabel: string;
+    nextLabel: string;
+    carouselLabel: string;
+    pauseLabel: string;
+    playLabel: string;
     stages: {
       excavation: GalleryPhoto;
       rebarPlumbing: GalleryPhoto;
@@ -125,11 +132,20 @@ export interface UiText {
     unconfirmedFootnote: string;
     unconfirmedTooltip: string;
   };
+  trust: {
+    establishedLabel: string;
+    yearsLabel: string;
+    communitiesLabel: string;
+  };
   cta: {
     title: string;
     description: string;
     getQuote: string;
     callPrefix: string; // `${callPrefix} ${phone}`
+    phoneLabel: string;
+    regionLabel: string;
+    addressLabel: string;
+    emailLabel: string;
   };
   footer: {
     links: { label: string; href: string }[];
@@ -147,15 +163,17 @@ export const ui: Record<Locale, UiText> = {
   en: {
     nav: {
       links: [
+        { label: "Services", href: "#services" },
+        { label: "Our Work", href: "#our-work" },
         { label: "About", href: "#about" },
-        { label: "Maintenance", href: "#maintenance" },
         { label: "Financing", href: "/finance" },
-        { label: "Service Area", href: "#service-area" },
         { label: "Contact", href: "#contact" },
       ],
       getQuote: "Get a Quote",
       languageSwitchLabel: "ES",
       languageSwitchHref: "/es",
+      openMenu: "Open menu",
+      closeMenu: "Close menu",
     },
     hero: {
       eyebrow: "Custom Pool Construction & Maintenance",
@@ -228,6 +246,11 @@ export const ui: Record<Locale, UiText> = {
       projectLabel: "Project",
       completedProjectsTitle: "More Completed Projects",
       completedProjectAlt: "Finished Garma Pools backyard pool and spa",
+      previousLabel: "Previous stage",
+      nextLabel: "Next stage",
+      carouselLabel: "Project build stages",
+      pauseLabel: "Pause gallery",
+      playLabel: "Play gallery",
       stages: {
         excavation: {
           caption: "Excavation",
@@ -300,16 +323,27 @@ export const ui: Record<Locale, UiText> = {
         "Coverage by city is not yet confirmed. Contact us to check availability in your area.",
       unconfirmedTooltip: "Coverage not yet confirmed",
     },
+    trust: {
+      establishedLabel: "Established",
+      yearsLabel: "Years in South Texas",
+      communitiesLabel: "Communities served",
+    },
     cta: {
       title: "Ready to Take Care of Your Pool?",
       description:
         "Whether you're building a new pool or need reliable maintenance, let's talk about your project.",
       getQuote: "Get a Quote",
       callPrefix: "Call",
+      phoneLabel: "Phone",
+      regionLabel: "Service area",
+      addressLabel: "Address",
+      emailLabel: "Email",
     },
     footer: {
       links: [
         { label: "Home", href: "#top" },
+        { label: "Services", href: "#services" },
+        { label: "Our Work", href: "#our-work" },
         { label: "Maintenance", href: "#maintenance" },
         { label: "About", href: "#about" },
         { label: "Contact", href: "#contact" },
@@ -326,15 +360,17 @@ export const ui: Record<Locale, UiText> = {
   es: {
     nav: {
       links: [
+        { label: "Servicios", href: "#services" },
+        { label: "Nuestro Trabajo", href: "#our-work" },
         { label: "Nosotros", href: "#about" },
-        { label: "Mantenimiento", href: "#maintenance" },
         { label: "Financiamiento", href: "/finance" },
-        { label: "Área de Servicio", href: "#service-area" },
         { label: "Contacto", href: "#contact" },
       ],
       getQuote: "Cotizar",
       languageSwitchLabel: "EN",
       languageSwitchHref: "/",
+      openMenu: "Abrir menú",
+      closeMenu: "Cerrar menú",
     },
     hero: {
       eyebrow: "Construcción y Mantenimiento de Albercas a tu Medida",
@@ -407,6 +443,11 @@ export const ui: Record<Locale, UiText> = {
       projectLabel: "Proyecto",
       completedProjectsTitle: "Más Proyectos Terminados",
       completedProjectAlt: "Alberca y spa de patio trasero de Garma Pools terminados",
+      previousLabel: "Etapa anterior",
+      nextLabel: "Etapa siguiente",
+      carouselLabel: "Etapas de construcción del proyecto",
+      pauseLabel: "Pausar galería",
+      playLabel: "Reproducir galería",
       stages: {
         excavation: {
           caption: "Excavación",
@@ -479,16 +520,27 @@ export const ui: Record<Locale, UiText> = {
         "La cobertura por ciudad aún no está confirmada. Contáctanos para verificar disponibilidad en tu área.",
       unconfirmedTooltip: "Cobertura aún no confirmada",
     },
+    trust: {
+      establishedLabel: "Fundada",
+      yearsLabel: "Años en el Sur de Texas",
+      communitiesLabel: "Comunidades atendidas",
+    },
     cta: {
       title: "¿Listo para Cuidar Tu Alberca?",
       description:
         "Ya sea que estés construyendo una alberca nueva o necesites mantenimiento confiable, hablemos de tu proyecto.",
       getQuote: "Cotizar",
       callPrefix: "Llamar",
+      phoneLabel: "Teléfono",
+      regionLabel: "Área de servicio",
+      addressLabel: "Dirección",
+      emailLabel: "Correo electrónico",
     },
     footer: {
       links: [
         { label: "Inicio", href: "#top" },
+        { label: "Servicios", href: "#services" },
+        { label: "Nuestro Trabajo", href: "#our-work" },
         { label: "Mantenimiento", href: "#maintenance" },
         { label: "Nosotros", href: "#about" },
         { label: "Contacto", href: "#contact" },

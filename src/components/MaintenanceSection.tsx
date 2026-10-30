@@ -1,58 +1,53 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Phone } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { maintenanceBenefits } from "@/data/maintenance";
+import { Reveal } from "@/components/ui/Reveal";
+import { company } from "@/data/company";
 import { ui } from "@/i18n/ui";
+import { quotePath } from "@/lib/paths";
 import type { Locale } from "@/i18n/locale";
 
 export function MaintenanceSection({ locale }: { locale: Locale }) {
   const t = ui[locale].maintenance;
+  const callPrefix = ui[locale].cta.callPrefix;
 
   return (
-    <section id="maintenance" className="bg-sky-50 py-20 sm:py-24">
-      <Container className="grid gap-12 lg:grid-cols-2 lg:items-center">
-        <div className="relative order-2 h-80 w-full overflow-hidden rounded-2xl lg:order-1 lg:h-full">
-          <Image
-            src="/images/maintenance-pool.jpg"
-            alt={t.photoAlt}
-            fill
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            className="object-cover"
-          />
-        </div>
-
-        <div className="order-1 flex flex-col gap-6 lg:order-2">
-          <SectionHeading
-            eyebrow={t.eyebrow}
-            title={t.title}
-            description={t.description}
-            align="left"
-          />
-
-          <div className="grid grid-cols-2 gap-4">
-            {maintenanceBenefits[locale].map((benefit) => {
-              const Icon = benefit.icon;
-              return (
-                <div
-                  key={benefit.title}
-                  className="flex flex-col items-start gap-2 rounded-2xl border border-navy-900/10 bg-white p-4"
-                >
-                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-pool-500/10 text-pool-600">
-                    <Icon className="h-5 w-5" aria-hidden />
-                  </div>
-                  <p className="text-sm font-bold text-navy-900">{benefit.title}</p>
-                </div>
-              );
-            })}
+    <section id="maintenance" className="bg-white py-24 sm:py-32">
+      <Container className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
+        <Reveal className="relative order-2 lg:order-1 lg:col-span-7">
+          <div className="group relative aspect-[4/3] overflow-hidden rounded-[1.75rem] bg-navy-900 shadow-[0_28px_60px_-36px_rgba(7,20,34,0.6)] lg:aspect-[5/4]">
+            <Image
+              src="/images/maintenance-pool.jpg"
+              alt={t.photoAlt}
+              fill
+              sizes="(min-width: 1024px) 58vw, 100vw"
+              className="object-cover transition duration-[1200ms] ease-out group-hover:scale-[1.04]"
+            />
           </div>
+        </Reveal>
 
-          <a
-            href="#quote"
-            className="mt-2 inline-flex w-fit items-center justify-center rounded-full bg-pool-500 px-7 py-3.5 text-sm font-bold text-navy-950 transition hover:bg-pool-400"
-          >
-            {t.ctaLabel}
-          </a>
-        </div>
+        <Reveal className="order-1 flex flex-col gap-6 lg:order-2 lg:col-span-5">
+          <span className="text-[0.72rem] font-semibold tracking-[0.22em] text-pool-600 uppercase">
+            {t.eyebrow}
+          </span>
+          <h2 className="font-serif text-4xl leading-[1.08] font-medium tracking-tight text-balance text-navy-900 sm:text-5xl lg:text-[3.5rem]">
+            {t.title}
+          </h2>
+          <span className="h-px w-16 bg-pool-500" aria-hidden />
+          <p className="max-w-md text-base leading-relaxed text-pretty text-navy-700 sm:text-lg">{t.description}</p>
+
+          <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <Link href={quotePath(locale, "maintenance")} className="btn btn-primary w-fit">
+              {t.ctaLabel}
+              <ArrowRight className="h-4 w-4" aria-hidden />
+            </Link>
+            <a href={company.phoneHref} className="btn btn-line w-fit text-navy-900">
+              <Phone className="h-4 w-4" aria-hidden />
+              {callPrefix} {company.phone}
+            </a>
+          </div>
+        </Reveal>
       </Container>
     </section>
   );
