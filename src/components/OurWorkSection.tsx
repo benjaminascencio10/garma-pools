@@ -26,6 +26,9 @@ const CATEGORIES: ProjectCategory[] = [
 
 export function OurWorkSection({ locale }: { locale: Locale }) {
   const t = ui[locale].projects;
+  // Only show categories that already have real photos; an empty tile reads
+  // as unfinished to visitors. The category page itself stays available.
+  const visibleCategories = CATEGORIES.filter((category) => getProjectsByCategory(category).length > 0);
 
   return (
     <section id="our-work" className="bg-white py-24 sm:py-32">
@@ -46,8 +49,8 @@ export function OurWorkSection({ locale }: { locale: Locale }) {
           <h3 className="text-[0.72rem] font-semibold tracking-[0.22em] text-pool-600 uppercase">
             {t.completedProjectsTitle}
           </h3>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {CATEGORIES.map((category) => {
+          <div className={`grid gap-4 sm:grid-cols-2 ${visibleCategories.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4"}`}>
+            {visibleCategories.map((category) => {
               const photos = getProjectsByCategory(category);
               const cover = photos[0];
               return (

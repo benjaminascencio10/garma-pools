@@ -19,7 +19,8 @@ export function CTASection({ locale }: { locale: Locale }) {
     { label: t.regionLabel, value: text.serviceRegion },
     { label: t.addressLabel, value: text.address },
     { label: t.emailLabel, value: text.email },
-  ];
+    // Rows still waiting on real business details stay hidden from visitors.
+  ].filter((detail) => !isPlaceholder(detail.value));
 
   return (
     <section id="contact" className="bg-sand-50 py-24 sm:py-32">
@@ -49,7 +50,7 @@ export function CTASection({ locale }: { locale: Locale }) {
                   <dt className="text-[0.68rem] font-semibold tracking-[0.16em] text-pool-400 uppercase">
                     {detail.label}
                   </dt>
-                  <dd className={`mt-1 text-base ${placeholder ? "text-sm text-sand-400 italic" : "text-white"}`}>
+                  <dd className={`mt-1.5 ${detail.href ? "font-serif text-2xl" : "text-base"} ${placeholder ? "text-sm text-sand-400 italic" : "text-white"}`}>
                     {detail.href && !placeholder ? (
                       <a href={detail.href} className="font-semibold hover:text-pool-100">
                         {detail.value}

@@ -11,7 +11,7 @@ export function SectionHeading({
   align?: "center" | "left";
   light?: boolean;
 }) {
-  const alignClass = align === "center" ? "items-center text-center" : "items-start text-left";
+  const alignClass = align === "center" ? "mx-auto items-center text-center" : "items-start text-left";
 
   return (
     <div className={`flex max-w-3xl flex-col gap-4 ${alignClass}`}>

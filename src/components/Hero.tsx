@@ -13,20 +13,23 @@ export function Hero({ locale }: { locale: Locale }) {
   return (
     <section id="top" className="relative isolate flex min-h-[84svh] items-center overflow-hidden bg-navy-950 text-white">
       <HeroBackdrop alt={t.hero.photoAlt} />
-      <div className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-950/50 to-navy-950/10" />
-      <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-navy-950/55 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-navy-950/70 to-transparent" />
+      {/* Readability scrim: a deep shadow over the left and bottom of the
+          photo so the bright water never shows behind the headline. */}
+      <div className="absolute inset-0 bg-navy-950/35 lg:bg-transparent" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,20,34,0.94)_0%,rgba(7,20,34,0.82)_32%,rgba(7,20,34,0.45)_58%,rgba(7,20,34,0.08)_85%)]" />
+      <div className="absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-t from-navy-950 via-navy-950/70 to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-navy-950/60 to-transparent" />
 
       <Container className="relative z-10 flex flex-col gap-8 py-32 sm:py-36">
         <div className="max-w-3xl">
-          <p className="text-[0.72rem] font-semibold tracking-[0.28em] text-pool-400 uppercase">
+          <p className="max-w-[19rem] text-[0.7rem] font-semibold tracking-[0.2em] text-balance text-pool-400 uppercase sm:max-w-none sm:text-[0.72rem] sm:tracking-[0.28em]">
             {t.hero.eyebrow}
           </p>
-          <h1 className="mt-4 font-serif text-[2.75rem] leading-[1.02] font-medium tracking-tight text-balance sm:text-6xl lg:text-7xl">
+          <h1 className="mt-4 font-serif text-[2.75rem] leading-[1.02] font-medium tracking-tight text-balance [text-shadow:0_2px_24px_rgba(7,20,34,0.55)] sm:text-6xl lg:text-7xl">
             {t.hero.titleLine1}
             <span className="mt-1 block italic text-pool-100">{t.hero.titleLine2}</span>
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/85 sm:text-xl">
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/90 [text-shadow:0_1px_12px_rgba(7,20,34,0.6)] sm:text-xl">
             {t.hero.description}
           </p>
         </div>

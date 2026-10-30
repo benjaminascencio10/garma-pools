@@ -19,7 +19,7 @@ export function BrandsSection({ locale }: { locale: Locale }) {
                 alt={`${brand.name} ${t.logoAltSuffix}`}
                 fill
                 sizes="176px"
-                className="object-contain grayscale transition duration-300 hover:grayscale-0"
+                className="object-contain mix-blend-multiply grayscale transition duration-300 hover:grayscale-0"
               />
             </li>
           ))}

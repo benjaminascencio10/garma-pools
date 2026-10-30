@@ -9,6 +9,11 @@ export interface MainService {
   icon: LucideIcon;
   photo: string;
   title: string;
+  // Short label shown on the homepage card (image + title only).
+  cardTitle: string;
+  // Where the whole card links to on the homepage.
+  cardHref: string;
+  // Kept for structured data (schema.org); not rendered on the card.
   description: string;
   ctaLabel: string;
   href: string;
@@ -24,6 +29,8 @@ export const mainServices: Record<Locale, MainService[]> = {
       icon: Hammer,
       photo: "/images/service-construction.jpg",
       title: "Pool Construction and Design",
+      cardTitle: "Construction & Design",
+      cardHref: "#our-work",
       description:
         "Custom residential pools designed and built around the way your family lives in the backyard.",
       ctaLabel: "Start Your Project",
@@ -34,6 +41,8 @@ export const mainServices: Record<Locale, MainService[]> = {
       icon: Droplets,
       photo: "/images/service-maintenance.jpg",
       title: "Pool Maintenance and Repair",
+      cardTitle: "Maintenance & Repair",
+      cardHref: "#maintenance",
       description:
         "Regular service to keep your water clean and balanced, plus repairs when equipment needs attention.",
       ctaLabel: "Get Maintenance Quote",
@@ -46,6 +55,8 @@ export const mainServices: Record<Locale, MainService[]> = {
       icon: Hammer,
       photo: "/images/service-construction.jpg",
       title: "Construcción y Diseño de Albercas",
+      cardTitle: "Construcción y Diseño",
+      cardHref: "#our-work",
       description:
         "Albercas residenciales a la medida, diseñadas y construidas para cómo tu familia vive el patio.",
       ctaLabel: "Inicia Tu Proyecto",
@@ -56,6 +67,8 @@ export const mainServices: Record<Locale, MainService[]> = {
       icon: Droplets,
       photo: "/images/service-maintenance.jpg",
       title: "Mantenimiento y Reparación de Albercas",
+      cardTitle: "Mantenimiento y Reparación",
+      cardHref: "#maintenance",
       description:
         "Servicio regular para mantener tu agua limpia y balanceada, más reparaciones cuando el equipo lo necesite.",
       ctaLabel: "Cotizar Mantenimiento",

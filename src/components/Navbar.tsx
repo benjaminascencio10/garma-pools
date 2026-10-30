@@ -13,19 +13,12 @@ import type { Locale } from "@/i18n/locale";
 
 export function Navbar({ locale, overlay = false }: { locale: Locale; overlay?: boolean }) {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname() || "/";
   const t = ui[locale];
   const home = homePath(locale);
-  const solid = !overlay || scrolled || open;
-
-  useEffect(() => {
-    if (!overlay) return;
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [overlay]);
+  // The header sits at the top of the page and scrolls away with it. It is
+  // never fixed or sticky, so it doesn't follow the visitor or cover content.
+  const solid = !overlay || open;
 
   useEffect(() => {
     if (!open) return;
@@ -55,9 +48,9 @@ export function Navbar({ locale, overlay = false }: { locale: Locale; overlay?: 
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        className={`${overlay ? "absolute inset-x-0 top-0" : "relative"} z-50 transition-colors duration-300 ${
           solid
-            ? "border-b border-navy-900/10 bg-white/95 shadow-[0_10px_30px_-22px_rgba(7,20,34,0.7)] backdrop-blur-md"
+            ? "border-b border-navy-900/10 bg-white"
             : "border-b border-transparent bg-transparent"
         }`}
       >
@@ -162,7 +155,6 @@ export function Navbar({ locale, overlay = false }: { locale: Locale; overlay?: 
           </nav>
         )}
       </header>
-      {!overlay && <div className="h-20" />}
     </>
   );
 }

@@ -40,13 +40,15 @@ export function AboutSection({ locale }: { locale: Locale }) {
             <h2 className="font-serif text-4xl leading-tight font-medium tracking-tight text-navy-900 sm:text-5xl">
               {t.tagline}
             </h2>
-            <div className="flex flex-col gap-4 text-base leading-relaxed text-navy-700 sm:text-lg">
-              <p>{t.paragraph1}</p>
-              <p>{t.paragraph2}</p>
-              <p>{t.paragraph3}</p>
+            {/* Trimmed for scannability: paragraph3 repeats the headline and the
+                footnote repeats the 2017 badge, so neither is rendered. */}
+            <div className="flex max-w-xl flex-col gap-4 leading-relaxed text-pretty">
+              <p className="text-lg text-navy-900 sm:text-xl">{t.paragraph1}</p>
+              <p className="text-base text-navy-700 sm:text-lg">{t.paragraph2}</p>
             </div>
-            <p className="font-serif text-2xl text-navy-900 italic">{t.closingLine}</p>
-            <p className="text-sm font-medium tracking-wide text-navy-700">{t.footnote}</p>
+            <p className="mt-2 border-l-2 border-pool-500 pl-4 font-serif text-2xl text-navy-900 italic">
+              {t.closingLine}
+            </p>
           </Reveal>
         </div>
       </Container>
